@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,26 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 1817787337
+    locked: 0
+  - name: Decor
+    uniqueID: 2119840127
+    locked: 0
+  - name: Building
+    uniqueID: 1285971849
+    locked: 0
+  - name: BuildingObject
+    uniqueID: 1019476197
+    locked: 0
+  - name: Vehicle
+    uniqueID: 1975075259
+    locked: 0
+  - name: Bridge
+    uniqueID: 2211481591
+    locked: 0
+  - name: Door
+    uniqueID: 2938011373
+    locked: 0
+  m_RenderingLayers:
+  - Default
