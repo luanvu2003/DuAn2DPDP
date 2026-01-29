@@ -50,5 +50,17 @@ TagManager:
   - name: Building
     uniqueID: 1285971849
     locked: 0
+  - name: BuildingObject
+    uniqueID: 1019476197
+    locked: 0
+  - name: Vehicle
+    uniqueID: 1975075259
+    locked: 0
+  - name: Bridge
+    uniqueID: 2211481591
+    locked: 0
+  - name: Door
+    uniqueID: 2938011373
+    locked: 0
   m_RenderingLayers:
   - Default
