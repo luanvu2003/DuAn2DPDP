@@ -62,5 +62,8 @@ TagManager:
   - name: Door
     uniqueID: 2938011373
     locked: 0
+  - name: PC
+    uniqueID: 2624121629
+    locked: 0
   m_RenderingLayers:
   - Default
