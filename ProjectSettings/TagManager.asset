@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - OpenPhone
   layers:
   - Default
   - TransparentFX
@@ -67,6 +68,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3973211975
+    locked: 0
+  - name: UI
+    uniqueID: 1469495659
     locked: 0
   m_RenderingLayers:
   - Default
