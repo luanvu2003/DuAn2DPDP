@@ -13,15 +13,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // 1. Kiểm tra khóa: Nếu bị khóa thì không nhận Input nữa
         if (isLocked)
         {
-            movement = Vector2.zero;      // Xóa vector di chuyển
-            rb.linearVelocity = Vector2.zero;   // Dừng ngay vật lý (Quan trọng!)
-            animator.SetFloat("Speed", 0f); // Ép Animation về đứng yên
-            return; // Thoát luôn, không chạy code bên dưới nữa
+            movement = Vector2.zero; 
+            rb.linearVelocity = Vector2.zero;   
+            animator.SetFloat("Speed", 0f); 
+            return; 
         }
-        // ----------------
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -50,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // Khi bị khóa, giữ nguyên vị trí hiện tại để tránh bị đẩy trôi
             rb.MovePosition(rb.position);
         }
     }
