@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class OpenPhone : MonoBehaviour
 {
-    public GameObject OpenPhoneText; 
-    public GameObject Phone;   
-    public GameObject PhoneUI; 
-    
+    public GameObject OpenPhoneText;
+    public GameObject Phone;
+    public GameObject PhoneUI;
+
     [Header("Kết nối Player")]
     public PlayerMovement playerMovement; // Kéo script PlayerMovement vào đây
     public Animator playerAnimator;       // Kéo Animator của Player vào đây
@@ -20,7 +20,7 @@ public class OpenPhone : MonoBehaviour
         {
             OpenThePhone();
         }
-        
+
         // TRƯỜNG HỢP 2: Đóng điện thoại (Khi đang mở + Bấm E hoặc ESC)
         else if (isPhoneActive && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)))
         {
@@ -47,12 +47,15 @@ public class OpenPhone : MonoBehaviour
     }
 
     // Hàm Mở Điện Thoại
+    // Hàm Mở Điện Thoại
     void OpenThePhone()
     {
+        Debug.Log("📱 [OpenPhone] Bắt đầu mở điện thoại..."); // Kiểm tra xem hàm có chạy không
+
         isPhoneActive = true;
 
         // 1. Xử lý UI
-        Phone.SetActive(false);       // Ẩn cái điện thoại dưới đất (nhặt lên)
+        Phone.SetActive(false);       // Ẩn cái điện thoại dưới đất
         PhoneUI.SetActive(true);      // Hiện UI
         OpenPhoneText.SetActive(false);
 
@@ -66,6 +69,17 @@ public class OpenPhone : MonoBehaviour
         if (playerAnimator != null)
         {
             playerAnimator.SetBool("IsUsingPhone", true);
+        }
+
+        // --- QUAN TRỌNG NHẤT: GỌI GAME CONTROLLER ---
+        if (GameController.Instance != null)
+        {
+            Debug.Log("✅ [OpenPhone] Tìm thấy GameController -> Gọi StartChapter");
+            GameController.Instance.StartChapter(); // <--- THÊM DÒNG NÀY VÀO
+        }
+        else
+        {
+            Debug.LogError("❌ [OpenPhone] LỖI: Không tìm thấy GameController! (Instance bị Null)");
         }
     }
 

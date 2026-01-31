@@ -1,171 +1,181 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
-    [Header("Dữ liệu Game")]
-    public List<ChapterData> allChapters; // Kéo 5 Chapter vào đây
-    
-    [Header("UI Chat")]
-    public GameObject chatPanel;
-    public TextMeshProUGUI npcNameText;
-    public TextMeshProUGUI npcDialogueText;
-    public Button buttonOptionA;
-    public Button buttonOptionB;
-    public TextMeshProUGUI textOptionA;
-    public TextMeshProUGUI textOptionB;
+    public static GameController Instance;
 
-    [Header("UI Minigame (Giả lập)")]
-    public GameObject minigamePanel;
-    public TextMeshProUGUI minigameTitle;
-    public TextMeshProUGUI currentTotalScoreText;
-
-    [Header("UI Ending")]
-    public GameObject endingPanel;
-    public TextMeshProUGUI endingTitleText;
-    public TextMeshProUGUI endingDescriptionText;
-
-    // Biến nội bộ
-    private int currentChapterIndex = 0;
+    [Header("--- DỮ LIỆU GAME ---")]
+    public List<ChapterData> allChapters; // Kéo các ChapterData vào đây
+    [SerializeField] private int currentChapterIndex = 0;
     private int currentTurnIndex = 0;
-    private int totalHumanityScore = 0;
+    private int totalScore = 0;
 
-    void Start()
+    [Header("--- UI CHAT ---")]
+    public ScrollRect chatScrollRect;       // Kéo Scroll View vào
+    public Transform chatContent;           // Kéo object Content trong Viewport vào
+    public GameObject choicePanel;          // Panel chứa 2 nút chọn
+
+    [Header("--- UI BUTTONS ---")]
+    public Button btnOptionA;
+    public TextMeshProUGUI txtOptionA;
+    public Button btnOptionB;
+    public TextMeshProUGUI txtOptionB;
+
+    [Header("--- PREFABS ---")]
+    public GameObject npcBubblePrefab;      // Prefab tin nhắn NPC (có tên ở trên)
+    public GameObject playerBubblePrefab;   // Prefab tin nhắn Player (không cần tên)
+
+    private void Awake()
     {
-        // Bắt đầu game
-        totalHumanityScore = 0;
-        currentChapterIndex = 0;
-        LoadChapter(currentChapterIndex);
+        // Singleton pattern để gọi từ script khác dễ dàng
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
 
-    // --- LOGIC CHAT ---
-    void LoadChapter(int index)
+    // Hàm này được gọi từ OpenPhone.cs
+    public void StartChapter()
     {
-        if (index >= allChapters.Count)
+        Debug.Log("📍 [CHECK 1] Đã vào hàm StartChapter");
+
+        if (allChapters == null)
         {
-            ShowEnding();
+            Debug.LogError("❌ LỖI: List 'allChapters' bị Null! Bạn chưa khởi tạo List.");
             return;
         }
 
-        currentTurnIndex = 0;
-        chatPanel.SetActive(true);
-        minigamePanel.SetActive(false);
-        endingPanel.SetActive(false);
-        
-        LoadTurn(allChapters[index].chatSequence[0]);
+        Debug.Log("📍 [CHECK 2] Số lượng Chapter đang có: " + allChapters.Count);
+
+        if (allChapters.Count == 0)
+        {
+            Debug.LogError("❌ LỖI: List 'allChapters' đang trống (Size = 0)! Hãy kéo file ChapterData vào Inspector.");
+            return;
+        }
+
+        if (currentChapterIndex >= allChapters.Count)
+        {
+            Debug.LogError("❌ LỖI: currentChapterIndex (" + currentChapterIndex + ") lớn hơn số lượng Chapter!");
+            return;
+        }
+
+        Debug.Log("📍 [CHECK 3] Bắt đầu LoadTurn đầu tiên...");
+        LoadTurn(allChapters[currentChapterIndex].chatSequence[0]);
     }
 
+    // Tải nội dung của lượt chat hiện tại
     void LoadTurn(DialogueTurn turn)
     {
-        npcNameText.text = turn.speakerName;
-        npcDialogueText.text = turn.npcDialogue;
+        // 1. Sinh bong bóng chat của NPC
+        // Tham số: Prefab, Nội dung chat, Tên người nói
+        SpawnBubble(npcBubblePrefab, turn.npcDialogue, turn.speakerName);
 
-        // Setup nút bấm A
-        textOptionA.text = turn.optionA.optionText;
-        buttonOptionA.onClick.RemoveAllListeners();
-        buttonOptionA.onClick.AddListener(() => OnOptionSelected(turn.optionA.scoreImpact));
+        // 2. Setup lựa chọn cho người chơi
+        SetupChoices(turn);
 
-        // Setup nút bấm B
-        textOptionB.text = turn.optionB.optionText;
-        buttonOptionB.onClick.RemoveAllListeners();
-        buttonOptionB.onClick.AddListener(() => OnOptionSelected(turn.optionB.scoreImpact));
+        // 3. Cuộn xuống dưới cùng
+        StartCoroutine(ScrollToBottom());
     }
 
-    void OnOptionSelected(int score)
+    void SetupChoices(DialogueTurn turn)
     {
-        totalHumanityScore += score;
-        Debug.Log("Điểm hiện tại: " + totalHumanityScore);
+        choicePanel.SetActive(true);
 
-        // Chuyển sang lượt chat tiếp theo
+        // Setup Nút A
+        txtOptionA.text = turn.optionA.optionText;
+        btnOptionA.onClick.RemoveAllListeners();
+        btnOptionA.onClick.AddListener(() => OnOptionSelected(turn, 0));
+
+        // Setup Nút B
+        txtOptionB.text = turn.optionB.optionText;
+        btnOptionB.onClick.RemoveAllListeners();
+        btnOptionB.onClick.AddListener(() => OnOptionSelected(turn, 1));
+    }
+
+    void OnOptionSelected(DialogueTurn turn, int choiceIndex)
+    {
+        // 1. Xác định người chơi chọn gì
+        string playerText = (choiceIndex == 0) ? turn.optionA.optionText : turn.optionB.optionText;
+        int score = (choiceIndex == 0) ? turn.optionA.scoreImpact : turn.optionB.scoreImpact;
+
+        // 2. Cộng điểm
+        totalScore += score;
+        Debug.Log("Tổng điểm Nhân tính: " + totalScore);
+
+        // 3. Sinh bong bóng chat của Player (Bên phải)
+        SpawnBubble(playerBubblePrefab, playerText, "Me");
+
+        // 4. Ẩn bảng chọn
+        choicePanel.SetActive(false);
+
+        // 5. Chuyển sang lượt tiếp theo
+        NextTurn();
+    }
+
+    void NextTurn()
+    {
         currentTurnIndex++;
         ChapterData currentChapter = allChapters[currentChapterIndex];
 
+        // Nếu vẫn còn lượt chat trong chương này
         if (currentTurnIndex < currentChapter.chatSequence.Count)
         {
-            // Vẫn còn chat trong chương này
-            LoadTurn(currentChapter.chatSequence[currentTurnIndex]);
+            // Gọi đệ quy để load câu tiếp theo
+            // Delay nhẹ 0.5s để cảm giác "đối phương đang soạn tin"
+            StartCoroutine(WaitAndLoadNext(currentChapter.chatSequence[currentTurnIndex]));
         }
         else
         {
-            // Hết 5 lượt chat -> Chuyển sang Minigame
-            StartMinigame(currentChapter);
+            Debug.Log("--- HẾT CHƯƠNG --- CHUYỂN SANG MINIGAME");
+            // Gọi code chuyển cảnh hoặc bật Minigame ở đây
+            // Example: MinigameController.Instance.StartGame(currentChapter.minigameName);
         }
     }
 
-    // --- LOGIC MINIGAME ---
-    void StartMinigame(ChapterData chapter)
+    IEnumerator WaitAndLoadNext(DialogueTurn turn)
     {
-        chatPanel.SetActive(false);
-        minigamePanel.SetActive(true);
-        minigameTitle.text = "NHIỆM VỤ: " + chapter.minigameName;
-        
-        // Ở đây bạn sẽ load Scene Minigame thật.
-        // Tạm thời tôi làm nút bấm giả lập "Thắng/Thua" minigame nhé.
+        yield return new WaitForSeconds(0.5f);
+        LoadTurn(turn);
     }
 
-    // Hàm này được gọi khi chơi xong Minigame (Bạn sẽ gọi hàm này từ script Minigame của bạn)
-    public void CompleteMinigame(int scoreFromGame)
+    // --- HÀM QUAN TRỌNG: SINH BONG BÓNG CHAT ---
+    void SpawnBubble(GameObject prefab, string message, string senderName)
     {
-        totalHumanityScore += scoreFromGame;
-        currentTotalScoreText.text = "Tổng điểm Nhân Tính: " + totalHumanityScore;
-        
-        // Qua chương tiếp theo
-        currentChapterIndex++;
-        
-        // Tạm dừng 2s để người chơi nhìn điểm rồi qua chương mới (Dùng Coroutine nếu muốn)
-        LoadChapter(currentChapterIndex); 
+        Debug.LogError("🔴 [BƯỚC 3] Code đã chạy tới SpawnBubble! Đang tạo Clone..."); // <--- Thêm dòng này
+
+        if (prefab == null) Debug.LogError("❌ LỖI: Prefab bị NULL!");
+        if (chatContent == null) Debug.LogError("❌ LỖI: ChatContent bị NULL!");
+
+        GameObject bubble = Instantiate(prefab, chatContent);
+
+        // Tự động tìm các TextMeshPro bên trong Prefab
+        // QUY ƯỚC: Text[0] là Tên (nếu có), Text[1] là Nội dung
+        TextMeshProUGUI[] texts = bubble.GetComponentsInChildren<TextMeshProUGUI>();
+
+        if (texts.Length == 2) // Dành cho NPC (Có tên + Nội dung)
+        {
+            texts[0].text = senderName; // Cái text nằm trên
+            texts[1].text = message;    // Cái text nằm trong bong bóng
+        }
+        else if (texts.Length == 1) // Dành cho Player (Chỉ có nội dung)
+        {
+            texts[0].text = message;
+        }
+
+        // Bắt buộc UI cập nhật lại kích thước ngay lập tức
+        LayoutRebuilder.ForceRebuildLayoutImmediate(chatContent.GetComponent<RectTransform>());
+        StartCoroutine(ScrollToBottom());
     }
-    
-    // Hàm giả lập nút bấm cho Minigame Panel (Dùng để test)
-    public void SimulateMinigameWin()
+
+    // Tự động cuộn xuống đáy
+    IEnumerator ScrollToBottom()
     {
-        CompleteMinigame(20); // Giả sử thắng tuyệt đối được 20 điểm
-    }
-    
-    public void SimulateMinigameFail()
-    {
-        CompleteMinigame(10); // Giả sử chơi tệ được 10 điểm
-    }
-
-    // --- LOGIC ENDING ---
-    void ShowEnding()
-    {
-        chatPanel.SetActive(false);
-        minigamePanel.SetActive(false);
-        endingPanel.SetActive(true);
-
-        string title = "";
-        string desc = "";
-
-        if (totalHumanityScore <= 20)
-        {
-            title = "BAD ENDING 1: BÓNG MA";
-            desc = "Bạn tan biến vào hư vô. Thế giới ảo đã nuốt chửng bạn.";
-        }
-        else if (totalHumanityScore <= 40)
-        {
-            title = "BAD ENDING 2: KẺ TRẮNG TAY";
-            desc = "Bạn nghèo khổ và cô độc. Lòng tham đã hại bạn.";
-        }
-        else if (totalHumanityScore <= 60)
-        {
-            title = "BAD ENDING 3: CHIẾC LỒNG SON";
-            desc = "Bạn giàu có nhưng vô cảm. Bạn mất đi những người thân yêu nhất.";
-        }
-        else if (totalHumanityScore <= 80)
-        {
-            title = "ENDING 4: NGƯỜI VÔ HÌNH";
-            desc = "Bạn sống cuộc đời bình lặng, nhưng thiếu đi ngọn lửa đam mê.";
-        }
-        else
-        {
-            title = "HAPPY ENDING: HAI THẾ GIỚI";
-            desc = "Cái cây cổ thụ tỏa bóng mát. Bạn đã tìm thấy sự cân bằng và hạnh phúc thực sự.";
-        }
-
-        endingTitleText.text = title;
-        endingDescriptionText.text = desc;
+        yield return new WaitForEndOfFrame();
+        // Cập nhật lại layout lần nữa cho chắc
+        Canvas.ForceUpdateCanvases();
+        chatScrollRect.verticalNormalizedPosition = 0f; // 0 = Dưới cùng
+        chatScrollRect.velocity = Vector2.zero;
     }
 }
