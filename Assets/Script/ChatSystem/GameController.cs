@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 
     [Header("--- DỮ LIỆU GAME ---")]
     public List<ChapterData> allChapters; // Kéo các ChapterData vào đây
-    [SerializeField] private int currentChapterIndex = 0;
+    // [SerializeField] private int currentChapterIndex = 0;
     private int currentTurnIndex = 0;
     private int totalScore = 0;
 
@@ -31,38 +31,35 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton pattern để gọi từ script khác dễ dàng
+        // Singleton pattern
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        // --- THÊM ĐOẠN NÀY ĐỂ TEST ---
+        // Mỗi lần bấm Play là reset về Ngày 0, Lượt 0 để test cho dễ
+        // Sau này làm xong tính năng Save/Load thì xóa 2 dòng này đi
+        StoryData.CurrentChapterIndex = 0;
+        StoryData.CurrentTurnIndex = 0;
+        StoryData.TotalScore = 0;
+        // -----------------------------
     }
 
     // Hàm này được gọi từ OpenPhone.cs
     public void StartChapter()
     {
-        Debug.Log("📍 [CHECK 1] Đã vào hàm StartChapter");
+        int chapterIdx = StoryData.CurrentChapterIndex;
 
-        if (allChapters == null)
+        // KIỂM TRA HẾT GAME
+        if (chapterIdx >= allChapters.Count)
         {
-            Debug.LogError("❌ LỖI: List 'allChapters' bị Null! Bạn chưa khởi tạo List.");
-            return;
+            Debug.Log("🎉 CHÚC MỪNG! BẠN ĐÃ PHÁ ĐẢO GAME!");
+            // Gọi UI End Game hoặc Credit tại đây
+            return; // Dừng lại, không load chat nữa
         }
 
-        Debug.Log("📍 [CHECK 2] Số lượng Chapter đang có: " + allChapters.Count);
-
-        if (allChapters.Count == 0)
-        {
-            Debug.LogError("❌ LỖI: List 'allChapters' đang trống (Size = 0)! Hãy kéo file ChapterData vào Inspector.");
-            return;
-        }
-
-        if (currentChapterIndex >= allChapters.Count)
-        {
-            Debug.LogError("❌ LỖI: currentChapterIndex (" + currentChapterIndex + ") lớn hơn số lượng Chapter!");
-            return;
-        }
-
-        Debug.Log("📍 [CHECK 3] Bắt đầu LoadTurn đầu tiên...");
-        LoadTurn(allChapters[currentChapterIndex].chatSequence[0]);
+        // Nếu chưa hết game thì load bình thường
+        int turnIdx = StoryData.CurrentTurnIndex;
+        LoadTurn(allChapters[chapterIdx].chatSequence[turnIdx]);
     }
 
     // Tải nội dung của lượt chat hiện tại
@@ -101,7 +98,7 @@ public class GameController : MonoBehaviour
         int score = (choiceIndex == 0) ? turn.optionA.scoreImpact : turn.optionB.scoreImpact;
 
         // 2. Cộng điểm
-        totalScore += score;
+        StoryData.TotalScore += score;
         Debug.Log("Tổng điểm Nhân tính: " + totalScore);
 
         // 3. Sinh bong bóng chat của Player (Bên phải)
@@ -116,21 +113,24 @@ public class GameController : MonoBehaviour
 
     void NextTurn()
     {
-        currentTurnIndex++;
-        ChapterData currentChapter = allChapters[currentChapterIndex];
+        // TĂNG LƯỢT TRONG SỔ TAY
+        StoryData.CurrentTurnIndex++;
 
-        // Nếu vẫn còn lượt chat trong chương này
-        if (currentTurnIndex < currentChapter.chatSequence.Count)
+        int chapterIdx = StoryData.CurrentChapterIndex;
+        int turnIdx = StoryData.CurrentTurnIndex;
+
+        ChapterData currentChapter = allChapters[chapterIdx];
+
+        if (turnIdx < currentChapter.chatSequence.Count)
         {
-            // Gọi đệ quy để load câu tiếp theo
-            // Delay nhẹ 0.5s để cảm giác "đối phương đang soạn tin"
-            StartCoroutine(WaitAndLoadNext(currentChapter.chatSequence[currentTurnIndex]));
+            StartCoroutine(WaitAndLoadNext(currentChapter.chatSequence[turnIdx]));
         }
         else
         {
-            Debug.Log("--- HẾT CHƯƠNG --- CHUYỂN SANG MINIGAME");
-            // Gọi code chuyển cảnh hoặc bật Minigame ở đây
-            // Example: MinigameController.Instance.StartGame(currentChapter.minigameName);
+            Debug.Log("--- HẾT CHƯƠNG ---");
+            // Tăng Chapter lên để lần sau vào game là qua chương mới
+            StoryData.CurrentChapterIndex++;
+            StoryData.CurrentTurnIndex = 0; // Reset turn về 0 cho chương mới
         }
     }
 
