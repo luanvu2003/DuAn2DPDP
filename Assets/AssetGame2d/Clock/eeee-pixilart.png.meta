@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 0ae70dc80d2f14845a539fd61a6bc4c0
+guid: b9e55892f34b84841b8238e86b908bd6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1180180885251371094
-    second: Bob_idle_16x16_0
+      213: 1577447119976153927
+    second: eeee-pixilart_0
   - first:
-      213: -4150355872189857776
-    second: Bob_idle_16x16_1
+      213: -6641624292499808907
+    second: eeee-pixilart_1
   - first:
-      213: 424029022547934153
-    second: Bob_idle_16x16_2
+      213: -3250738662031238123
+    second: eeee-pixilart_2
   - first:
-      213: 6428056806411725142
-    second: Bob_idle_16x16_3
+      213: -8335255703616323371
+    second: eeee-pixilart_3
+  - first:
+      213: 8132810975577888478
+    second: eeee-pixilart_4
+  - first:
+      213: -1737790300086481439
+    second: eeee-pixilart_5
+  - first:
+      213: -1904495181579383256
+    second: eeee-pixilart_6
+  - first:
+      213: -4314206280337116543
+    second: eeee-pixilart_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -105,95 +117,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: VisionOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bob_idle_16x16_0
+      name: eeee-pixilart_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 15
-        height: 23
+        x: 5
+        y: 146
+        width: 47
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6503d142348d06010800000000000000
-      internalID: 1180180885251371094
+      spriteID: 74344264cc734e510800000000000000
+      internalID: 1577447119976153927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bob_idle_16x16_1
+      name: eeee-pixilart_1
       rect:
         serializedVersion: 2
-        x: 15
-        y: 0
-        width: 18
-        height: 23
+        x: 79
+        y: 145
+        width: 47
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 010caa2e259f666c0800000000000000
-      internalID: -4150355872189857776
+      spriteID: 57d91f115e534d3a0800000000000000
+      internalID: -6641624292499808907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bob_idle_16x16_2
+      name: eeee-pixilart_2
       rect:
         serializedVersion: 2
-        x: 33
-        y: 0
-        width: 15
-        height: 23
+        x: 151
+        y: 146
+        width: 47
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9cbfc6f362472e500800000000000000
-      internalID: 424029022547934153
+      spriteID: 51cdff7f86e03e2d0800000000000000
+      internalID: -3250738662031238123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bob_idle_16x16_3
+      name: eeee-pixilart_3
       rect:
         serializedVersion: 2
-        x: 47
-        y: 0
-        width: 17
-        height: 23
+        x: 7
+        y: 83
+        width: 47
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,8 +202,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 659e33eab9b053950800000000000000
-      internalID: 6428056806411725142
+      spriteID: 5d086e18919335c80800000000000000
+      internalID: -8335255703616323371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eeee-pixilart_4
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 83
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed6d7b82e7c8dd070800000000000000
+      internalID: 8132810975577888478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eeee-pixilart_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 81
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1edc935ede022e7e0800000000000000
+      internalID: -1737790300086481439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eeee-pixilart_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 21
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82e848909bfd195e0800000000000000
+      internalID: -1904495181579383256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eeee-pixilart_7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 21
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1823fb4ee3cd024c0800000000000000
+      internalID: -4314206280337116543
       vertices: []
       indices: 
       edges: []
@@ -288,10 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bob_idle_16x16_0: 1180180885251371094
-      Bob_idle_16x16_1: -4150355872189857776
-      Bob_idle_16x16_2: 424029022547934153
-      Bob_idle_16x16_3: 6428056806411725142
+      eeee-pixilart_0: 1577447119976153927
+      eeee-pixilart_1: -6641624292499808907
+      eeee-pixilart_2: -3250738662031238123
+      eeee-pixilart_3: -8335255703616323371
+      eeee-pixilart_4: 8132810975577888478
+      eeee-pixilart_5: -1737790300086481439
+      eeee-pixilart_6: -1904495181579383256
+      eeee-pixilart_7: -4314206280337116543
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
