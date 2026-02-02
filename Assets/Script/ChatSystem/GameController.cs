@@ -71,10 +71,16 @@ public class GameController : MonoBehaviour
     void LoadTurn(DialogueTurn turn)
     {
         // --- SỬA ĐOẠN NÀY ---
-        // Chỉ sinh bong bóng NPC nếu có nội dung thoại
-        if (!string.IsNullOrEmpty(turn.npcDialogue))
+        // Logic: Phải thỏa mãn cả 2 điều kiện:
+        // 1. Dấu tích showNPCBubble được BẬT
+        // 2. Nội dung không được trống
+        if (turn.showNPCBubble && !string.IsNullOrEmpty(turn.npcDialogue))
         {
             SpawnBubble(npcBubblePrefab, turn.npcDialogue, turn.speakerName);
+        }
+        else
+        {
+            Debug.Log("Turn này NPC không nói gì (hoặc bị tắt hiển thị).");
         }
         // --------------------
 
@@ -141,42 +147,38 @@ public class GameController : MonoBehaviour
 
     void OnOptionSelected(DialogueTurn turn, int choiceIndex)
     {
+        // Lấy dữ liệu của lựa chọn vừa bấm (A hoặc B)
         OptionData selectedOption = (choiceIndex == 0) ? turn.optionA : turn.optionB;
 
+        // 1. CỘNG ĐIỂM
         StoryData.TotalScore += selectedOption.scoreImpact;
 
-        // --- XỬ LÝ HIỆN TIN NHẮN PLAYER ---
-        if (turn.isFinalTurn == false)
+        // 2. XỬ LÝ HIỆN TIN NHẮN (Dựa trên dấu tích showBubble)
+        // Nếu dấu tích ĐƯỢC BẬT -> Hiện bong bóng
+        if (selectedOption.showBubble)
         {
-            // Debug xem text là gì (kiểm tra Console xem có hiện dòng này không)
-            Debug.Log("Đang thử sinh tin nhắn Player: " + selectedOption.responseText);
-
+            // Kiểm tra thêm cho chắc: Phải có chữ mới hiện
             if (!string.IsNullOrEmpty(selectedOption.responseText))
             {
                 SpawnBubble(playerBubblePrefab, selectedOption.responseText, "Me");
             }
-            else
-            {
-                Debug.LogWarning("⚠️ CẢNH BÁO: Response Text của Turn này đang để TRỐNG!");
-            }
         }
         else
         {
-            Debug.Log("Lượt cuối: Không hiện chat.");
+            // Nếu dấu tích BỊ TẮT -> Không làm gì cả (Im lặng/Hành động)
+            Debug.Log("Người chơi chọn hành động ẩn (Không hiện chat).");
         }
 
-        // Tắt UI
+        // 3. TẮT UI & CHUYỂN TIẾP
         choicePanel.SetActive(false);
         if (thoughtPanel != null) thoughtPanel.SetActive(false);
 
-        // Chuyển tiếp
         if (turn.isFinalTurn)
         {
             StartCoroutine(EndChapterAndStartMinigame(selectedOption.minigameBonusTime));
         }
         else
         {
-            // Gọi NextTurn nhưng vẫn đảm bảo tin nhắn Player kịp hiện ra
             NextTurn();
         }
     }

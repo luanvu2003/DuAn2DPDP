@@ -10,23 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
-  m_Name: C1_Turn5_QuyetDinhHanhDong
+  m_Name: C2_Turn4_SoSanh
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
   speakerName: 
   npcDialogue: 
-  internalThought: "M\xF9i h\xF4i t\u1EEB \u0111\u1ED1ng r\xE1c n\xE0y l\xE0m m\xECnh
-    ng\u1EA1t th\u1EDF. M\xECnh ph\u1EA3i l\xE0m g\xEC \u0111\xF3..."
+  showNPCBubble: 0
+  internalThought: "M\u1ED9t b\xEAn l\xE0 ng\u1ED3i m\xE1y l\u1EA1nh b\u1EA5m \u0111i\u1EC7n
+    tho\u1EA1i c\xF3 5 tri\u1EC7u. M\u1ED9t b\xEAn l\xE0 ch\u1EA1y xe \xF4m \u0111\u01B0\u1EE3c
+    200k."
   optionA:
-    optionText: "Th\xF4i n\u1EB1m l\u01B0\u1EDBt TikTok t\xED \u0111\xE3, mai d\u1ECDn."
+    optionText: "T\u1EA1i sao m\xECnh ph\u1EA3i kh\u1ED5 s\u1EDF ch\u1EA1y xe \xF4m
+      ch\u1EE9? M\xECnh x\u1EE9ng \u0111\xE1ng \u0111\u01B0\u1EE3c nhi\u1EC1u h\u01A1n."
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 0
   optionB:
-    optionText: "\u0110\u1EE9ng d\u1EADy ngay! D\u1ECDn s\u1EA1ch c\xE1i chu\u1ED3ng
-      l\u1EE3n n\xE0y!"
+    optionText: "\u0110\u1ED3ng ti\u1EC1n m\u1ED3 h\xF4i n\u01B0\u1EDBc m\u1EAFt
+      m\u1EDBi l\xE0 ti\u1EC1n s\u1EA1ch. C\u1EDD b\u1EA1c l\xE0 b\xE1c th\u1EB1ng
+      b\u1EA7n."
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 0
-  isFinalTurn: 1
+  isFinalTurn: 0
