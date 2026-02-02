@@ -12,20 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
   m_Name: C2_Turn1_MoiCau
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
-  speakerName: Spam
-  npcDialogue: "Vi\u1EC7c nh\u1EB9 l\u01B0\u01A1ng cao. N\u1EA1p 200k nh\u1EADn ngay
-    5 tri\u1EC7u sau 10 ph\xFAt. Cam k\u1EBFt uy t\xEDn."
+  conversation:
+  - speakerName: Spam
+    content: "Vi\u1EC7c nh\u1EB9 l\u01B0\u01A1ng cao. N\u1EA1p 200k nh\u1EADn ngay
+      5 tri\u1EC7u sau 10 ph\xFAt. Cam k\u1EBFt uy t\xEDn."
+    showBubble: 1
+    delayDuration: 0
   internalThought: "Trong t\xFAi m\xECnh c\xF2n \u0111\xFAng 200k cu\u1ED1i c\xF9ng..."
   optionA:
     optionText: "Th\u1EADt kh\xF4ng? C\xF3 l\u1EEBa \u0111\u1EA3o kh\xF4ng \u0111\u1EA5y?"
-    responseText: 
+    responseText: "Th\u1EADt kh\xF4ng? C\xF3 l\u1EEBa \u0111\u1EA3o kh\xF4ng \u0111\u1EA5y?"
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 1
   optionB:
     optionText: "L\xE0m g\xEC c\xF3 chuy\u1EC7n ti\u1EC1n t\u1EEB tr\xEAn tr\u1EDDi
       r\u01A1i xu\u1ED1ng."
-    responseText: 
+    responseText: "L\xE0m g\xEC c\xF3 chuy\u1EC7n ti\u1EC1n t\u1EEB tr\xEAn tr\u1EDDi
+      r\u01A1i xu\u1ED1ng."
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 0

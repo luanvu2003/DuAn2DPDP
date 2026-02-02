@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C3_Turn3_LeoThang
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation:
+  - speakerName: Anti-fan
+    content: "Haha \u0111i\u1EC7n tho\u1EA1i c\xF9i b\u1EAFp v\u1EE1 r\u1ED3i k\xECa.
+      \u0110\u1ED3 ngh\xE8o r\u1EDBt m\u1ED3ng t\u01A1i."
+    showBubble: 1
+    delayDuration: 0
+  internalThought: "\u0110\u1ECDc comment xong quay sang nh\xECn con ch\xF3 v\u1EDBi
+    \xE1nh m\u1EAFt h\xECnh vi\xEAn \u0111\u1EA1n."
+  optionA:
+    optionText: "T\u1EA1i m\xE0y \u0111\u1EA5y!"
+    responseText: "T\u1EA1i m\xE0y \u0111\u1EA5y!"
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  optionB:
+    optionText: "Kh\xF4ng ph\u1EA3i l\u1ED7i c\u1EE7a m\xE0y..."
+    responseText: "Kh\xF4ng ph\u1EA3i l\u1ED7i c\u1EE7a m\xE0y..."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  isFinalTurn: 0

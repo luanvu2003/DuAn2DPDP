@@ -12,21 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
   m_Name: C2_Turn3_SuLuaChonKhac
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
-  speakerName: "C\xF4 T\u01B0"
-  npcDialogue: "Nam \u01A1i, c\xF4 \u0111au ch\xE2n qu\xE1. Con qua ch\u1EA1y gi\xFAp
-    c\xF4 m\u1EA5y \u0111\u01A1n h\xE0ng, c\xF4 tr\u1EA3 ti\u1EC1n c\xF4ng li\u1EC1n."
-  showNPCBubble: 1
+  conversation:
+  - speakerName: "C\xF4 T\u01B0"
+    content: "Nam \u01A1i, c\xF4 \u0111au ch\xE2n qu\xE1. Con qua ch\u1EA1y gi\xFAp
+      c\xF4 m\u1EA5y \u0111\u01A1n h\xE0ng, c\xF4 tr\u1EA3 ti\u1EC1n c\xF4ng li\u1EC1n."
+    showBubble: 1
+    delayDuration: 0
   internalThought: "L\xE0m shipper \xE0? N\u1EAFng n\xF4i c\u1EF1c kh\u1ED5 m\xE0
     \u0111\u01B0\u1EE3c c\xF3 m\u1EA5y \u0111\u1ED3ng..."
   optionA:
     optionText: "Con b\u1EADn l\u1EAFm c\xF4 \u01A1i."
-    responseText: 
+    responseText: "Con b\u1EADn l\u1EAFm c\xF4 \u01A1i."
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 1
   optionB:
     optionText: "V\xE2ng, c\xF4 \u0111\u1EE3i con ch\xFAt con qua ngay."
-    responseText: 
+    responseText: "V\xE2ng, c\xF4 \u0111\u1EE3i con ch\xFAt con qua ngay."
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 1

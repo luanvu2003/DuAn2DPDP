@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C5_Turn4_NgatKetNoi
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation: []
+  internalThought: "C\u1EA7m \u0111i\u1EC7n tho\u1EA1i tr\xEAn tay. N\xFAt ngu\u1ED3n
+    \u0111ang s\xE1ng."
+  optionA:
+    optionText: "Nh\u01B0ng n\u1EBFu t\u1EAFt m\xE1y, m\xECnh s\u1EBD l\u1EE1 m\u1EA5t
+      tin nh\u1EAFn quan tr\u1ECDng th\xEC sao? M\xECnh s\u1EBD b\u1ECB l\xE3ng qu\xEAn..."
+    responseText: "Nh\u01B0ng n\u1EBFu t\u1EAFt m\xE1y, m\xECnh s\u1EBD l\u1EE1 m\u1EA5t
+      tin nh\u1EAFn quan tr\u1ECDng th\xEC sao? M\xECnh s\u1EBD b\u1ECB l\xE3ng qu\xEAn..."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  optionB:
+    optionText: "M\xECnh kh\xF4ng mu\u1ED1n l\xE0m n\xF4 l\u1EC7 cho n\xF3 n\u1EEFa."
+    responseText: "M\xECnh kh\xF4ng mu\u1ED1n l\xE0m n\xF4 l\u1EC7 cho n\xF3 n\u1EEFa."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  isFinalTurn: 0

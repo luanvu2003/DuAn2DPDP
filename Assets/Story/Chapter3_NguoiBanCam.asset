@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fa7a4edd6f5b2419316b4941f71be4, type: 3}
+  m_Name: Chapter3_NguoiBanCam
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterData
+  chapterName: 
+  chatSequence:
+  - {fileID: 11400000, guid: 846a8fb39d06b2342a8da8cd15232aa9, type: 2}
+  - {fileID: 11400000, guid: e53c63f3ebc7da949a1114656af82f5f, type: 2}
+  - {fileID: 11400000, guid: b0478d4b12bc19443b4c8218e1e2597c, type: 2}
+  - {fileID: 11400000, guid: 9fb9b885f71e4e348b1a02394e5d526a, type: 2}
+  - {fileID: 11400000, guid: 3c9667f0fb59c024cb8faf4fe023ef27, type: 2}
+  minigameName: 
+  maxMinigameScore: 20

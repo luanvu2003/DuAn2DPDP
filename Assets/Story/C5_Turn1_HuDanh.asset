@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C5_Turn1_HuDanh
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation:
+  - speakerName: Facebook
+    content: "99+ th\xF4ng b\xE1o. C\xE1c nh\xE3n h\xE0ng m\u1EDDi qu\u1EA3ng c\xE1o.
+      C\xE1c hotgirl xin k\u1EBFt b\u1EA1n."
+    showBubble: 1
+    delayDuration: 0
+  internalThought: "\u0110i\u1EC7n tho\u1EA1i rung li\xEAn t\u1EE5c."
+  optionA:
+    optionText: "Cu\u1ED1i c\xF9ng m\xECnh c\u0169ng th\xE0nh ng\u01B0\u1EDDi n\u1ED5i
+      ti\u1EBFng. B\u1ECDn th\u1EB1ng H\xF9ng ph\u1EA3i ng\u01B0\u1EDBc nh\xECn m\xECnh."
+    responseText: "Cu\u1ED1i c\xF9ng m\xECnh c\u0169ng th\xE0nh ng\u01B0\u1EDDi n\u1ED5i
+      ti\u1EBFng. B\u1ECDn th\u1EB1ng H\xF9ng ph\u1EA3i ng\u01B0\u1EDBc nh\xECn m\xECnh."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  optionB:
+    optionText: "\u1ED2n \xE0o qu\xE1. Nh\u1EEFng c\xE1i like n\xE0y \u0111\xE2u
+      l\xE0m m\xECnh no b\u1EE5ng, \u0111\xE2u l\xE0m m\xECnh h\u1EA1nh ph\xFAc."
+    responseText: "\u1ED2n \xE0o qu\xE1. Nh\u1EEFng c\xE1i like n\xE0y \u0111\xE2u
+      l\xE0m m\xECnh no b\u1EE5ng, \u0111\xE2u l\xE0m m\xECnh h\u1EA1nh ph\xFAc."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  isFinalTurn: 0

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C3_Turn4_HauQua
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation: []
+  internalThought: "Con M\u1EF1c: S\u1EE3 h\xE3i chui t\u1ECDt v\xE0o g\u1EA7m gi\u01B0\u1EDDng,
+    r\xEAn \u01B0 \u1EED.\nNam: Nh\xECn v\xE0o g\u1EA7m gi\u01B0\u1EDDng t\u1ED1i
+    om, th\u1EA5y \u0111\xF4i m\u1EAFt n\xF3 long lanh s\u1EE3 s\u1EC7t."
+  optionA:
+    optionText: "Cho ch\u1EEBa. L\u1EA7n sau c\xF2n ph\xE1 tao n\u1EEFa th\xEC tao
+      b\xE1n v\xE0o qu\xE1n c\u1EA7y t\u01A1."
+    responseText: "Cho ch\u1EEBa. L\u1EA7n sau c\xF2n ph\xE1 tao n\u1EEFa th\xEC
+      tao b\xE1n v\xE0o qu\xE1n c\u1EA7y t\u01A1."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  optionB:
+    optionText: "M\u1EF1c \u01A1i... Tao xin l\u1ED7i. Tao n\xF3ng qu\xE1..."
+    responseText: "M\u1EF1c \u01A1i... Tao xin l\u1ED7i. Tao n\xF3ng qu\xE1..."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  isFinalTurn: 0
