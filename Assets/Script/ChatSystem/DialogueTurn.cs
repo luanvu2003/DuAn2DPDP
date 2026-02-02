@@ -1,21 +1,32 @@
 using UnityEngine;
-using System.Collections.Generic;
-
-[System.Serializable]
-public class DialogueOption
-{
-    [TextArea] public string optionText; // Lời thoại của Nam
-    public int scoreImpact; // Điểm cộng/trừ (VD: +4 hoặc 0)
-}
 
 [CreateAssetMenu(fileName = "New Turn", menuName = "TwoWorlds/DialogueTurn")]
 public class DialogueTurn : ScriptableObject
 {
-    [Header("Lời thoại NPC / Tình huống")]
-    public string speakerName; // Tên người nói (Hùng, Lan, Spammer...)
-    [TextArea(3, 10)] public string npcDialogue; // Nội dung chat của họ
+    [Header("--- THÔNG TIN NPC ---")]
+    public string speakerName;
+    [TextArea(3, 5)] public string npcDialogue; // Tin nhắn của Hùng/Lan/Ẩn danh
 
-    [Header("Lựa chọn của Người chơi")]
-    public DialogueOption optionA; // Lựa chọn Tiêu cực
-    public DialogueOption optionB; // Lựa chọn Tích cực
+    [Header("--- SUY NGHĨ CỦA NAM (MỚI) ---")]
+    [TextArea(2, 4)] public string internalThought; // "Nam (Nghĩ): Lại là nó..."
+
+    [Header("--- LỰA CHỌN A ---")]
+    public OptionData optionA;
+
+    [Header("--- LỰA CHỌN B ---")]
+    public OptionData optionB;
+
+    [Header("--- CẤU HÌNH ĐẶC BIỆT ---")]
+    public bool isFinalTurn = false; // Đánh dấu đây là lượt cuối (Lượt 5) để chuyển game
+}
+
+[System.Serializable]
+public class OptionData
+{
+    public string optionText;   // Chữ hiện trên nút
+    public string responseText; // Tin nhắn sẽ gửi đi (Nếu để trống = Im lặng/Hành động)
+    public int scoreImpact;     // Điểm cộng/trừ
+    
+    // Thêm biến này để quy định thời gian cho Minigame (Dùng cho lượt 5)
+    public float minigameBonusTime = 0; 
 }
