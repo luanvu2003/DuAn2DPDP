@@ -23,6 +23,7 @@ MonoBehaviour:
       Hay l\xE0m \u0103n phi ph\xE1p?"
     scoreImpact: 0
     minigameBonusTime: 0
+    showBubble: 1
   optionB:
     optionText: "K\u1EC7 n\xF3, cu\u1ED9c \u0111\u1EDDi ai ng\u01B0\u1EDDi n\u1EA5y
       s\u1ED1ng."
@@ -30,4 +31,5 @@ MonoBehaviour:
       s\u1ED1ng."
     scoreImpact: 0
     minigameBonusTime: 0
+    showBubble: 0
   isFinalTurn: 0

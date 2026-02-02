@@ -26,7 +26,9 @@ public class OptionData
     public string optionText;   // Chữ hiện trên nút
     public string responseText; // Tin nhắn sẽ gửi đi (Nếu để trống = Im lặng/Hành động)
     public int scoreImpact;     // Điểm cộng/trừ
-    
+
     // Thêm biến này để quy định thời gian cho Minigame (Dùng cho lượt 5)
-    public float minigameBonusTime = 0; 
+    public float minigameBonusTime = 0;
+    [Tooltip("Tích vào để hiện bong bóng chat. Bỏ tích nếu đây là hành động/suy nghĩ.")]
+    public bool showBubble = true;  // <--- THÊM DÒNG NÀY (Mặc định là True)
 }

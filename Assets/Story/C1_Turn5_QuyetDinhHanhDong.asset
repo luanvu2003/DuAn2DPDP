@@ -21,10 +21,12 @@ MonoBehaviour:
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
+    showBubble: 0
   optionB:
     optionText: "\u0110\u1EE9ng d\u1EADy ngay! D\u1ECDn s\u1EA1ch c\xE1i chu\u1ED3ng
       l\u1EE3n n\xE0y!"
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
+    showBubble: 0
   isFinalTurn: 1

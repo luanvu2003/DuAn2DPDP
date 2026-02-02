@@ -23,11 +23,13 @@ MonoBehaviour:
       th\xED c\u1EE7a m\xE0y!"
     scoreImpact: 0
     minigameBonusTime: 0
+    showBubble: 1
   optionB:
-    optionText: "T\u1EAFt th\xF4ng b\xE1o nh\xF3m chat. H\u01A1i \u0111\xE2u m\xE0
-      c\xE3i nhau v\u1EDBi ng\u01B0\u1EDDi kh\xF4ng hi\u1EC3u m\xECnh."
-    responseText: "T\u1EAFt th\xF4ng b\xE1o nh\xF3m chat. H\u01A1i \u0111\xE2u m\xE0
-      c\xE3i nhau v\u1EDBi ng\u01B0\u1EDDi kh\xF4ng hi\u1EC3u m\xECnh."
+    optionText: "H\u01A1i \u0111\xE2u m\xE0 c\xE3i nhau v\u1EDBi ng\u01B0\u1EDDi
+      kh\xF4ng hi\u1EC3u m\xECnh."
+    responseText: "H\u01A1i \u0111\xE2u m\xE0 c\xE3i nhau v\u1EDBi ng\u01B0\u1EDDi
+      kh\xF4ng hi\u1EC3u m\xECnh."
     scoreImpact: 0
     minigameBonusTime: 0
+    showBubble: 0
   isFinalTurn: 0
