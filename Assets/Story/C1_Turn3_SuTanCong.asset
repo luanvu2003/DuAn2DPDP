@@ -15,11 +15,19 @@ MonoBehaviour:
   speakerName: "H\xF9ng"
   npcDialogue: "Startup h\u1EA3? Hay l\xE0 th\u1EA5t nghi\u1EC7p n\u1EB1m nh\xE0?
     Th\xF4i ngh\xE8o th\xEC b\u1EA3o anh em bank cho 50k \u0103n s\xE1ng."
+  internalThought: "50k? N\xF3 coi m\xECnh l\xE0 \u0103n m\xE0y \xE0?"
   optionA:
     optionText: "C\xE2m m\u1ED3m! Tao \u0111\u1EBFch c\u1EA7n ti\u1EC1n b\u1ED1 th\xED
       c\u1EE7a m\xE0y!"
+    responseText: "C\xE2m m\u1ED3m! Tao \u0111\u1EBFch c\u1EA7n ti\u1EC1n b\u1ED1
+      th\xED c\u1EE7a m\xE0y!"
     scoreImpact: 0
+    minigameBonusTime: 0
   optionB:
-    optionText: "T\u1EAFt th\xF4ng b\xE1o nh\xF3m chat. \"H\u01A1i \u0111\xE2u m\xE0
+    optionText: "T\u1EAFt th\xF4ng b\xE1o nh\xF3m chat. H\u01A1i \u0111\xE2u m\xE0
+      c\xE3i nhau v\u1EDBi ng\u01B0\u1EDDi kh\xF4ng hi\u1EC3u m\xECnh."
+    responseText: "T\u1EAFt th\xF4ng b\xE1o nh\xF3m chat. H\u01A1i \u0111\xE2u m\xE0
       c\xE3i nhau v\u1EDBi ng\u01B0\u1EDDi kh\xF4ng hi\u1EC3u m\xECnh."
     scoreImpact: 0
+    minigameBonusTime: 0
+  isFinalTurn: 0

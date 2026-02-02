@@ -16,11 +16,19 @@ MonoBehaviour:
   npcDialogue: "@Nam d\u1EA1o n\xE0y l\xE0m gi\xE1m \u0111\u1ED1c \u1EDF \u0111\xE2u
     r\u1ED3i m\xE0 im th\u1EBF? Kh\xF4ng th\u1EA5y \u0111i h\u1ECDp l\u1EDBp bao
     gi\u1EDD."
+  internalThought: "B\u1ECDn n\xF3 \u0111ang m\u1EC9a mai m\xECnh..."
   optionA:
     optionText: "Tao \u0111ang b\u1EADn d\u1EF1 \xE1n Startup tri\u1EC7u \u0111\xF4.
       M\u1EA5y c\xE1i h\u1ECDp l\u1EDBp v\u1EDB v\u1EA9n tao kh\xF4ng r\u1EA3nh."
+    responseText: "Tao \u0111ang b\u1EADn d\u1EF1 \xE1n Startup tri\u1EC7u \u0111\xF4.
+      M\u1EA5y c\xE1i h\u1ECDp l\u1EDBp v\u1EDB v\u1EA9n tao kh\xF4ng r\u1EA3nh."
     scoreImpact: 0
+    minigameBonusTime: 0
   optionB:
     optionText: "T\u1EDB \u0111ang t\xECm \u0111\u1ECBnh h\u01B0\u1EDBng m\u1EDBi,
       d\u1EA1o n\xE0y c\u0169ng h\u01A1i kh\xF3 kh\u0103n."
+    responseText: "T\u1EDB \u0111ang t\xECm \u0111\u1ECBnh h\u01B0\u1EDBng m\u1EDBi,
+      d\u1EA1o n\xE0y c\u0169ng h\u01A1i kh\xF3 kh\u0103n."
     scoreImpact: 0
+    minigameBonusTime: 0
+  isFinalTurn: 0

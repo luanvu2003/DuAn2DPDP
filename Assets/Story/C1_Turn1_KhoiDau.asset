@@ -15,11 +15,19 @@ MonoBehaviour:
   speakerName: "H\xF9ng"
   npcDialogue: "M\u1EDBi l\u1EA5y con M\u1EB9c GLC, anh em cu\u1ED1i tu\u1EA7n \u0111i
     r\u1EEDa xe kh\xF4ng?"
+  internalThought: "L\u1EA1i l\xE0 n\xF3. L\xFAc n\xE0o c\u0169ng khoe c\u1EE7a."
   optionA:
     optionText: "M\u1EDBi tr\xFAng s\u1ED1 hay sao m\xE0 gi\xE0u nhanh th\u1EBF?
       Hay l\xE0m \u0103n phi ph\xE1p?"
+    responseText: "M\u1EDBi tr\xFAng s\u1ED1 hay sao m\xE0 gi\xE0u nhanh th\u1EBF?
+      Hay l\xE0m \u0103n phi ph\xE1p?"
     scoreImpact: 0
+    minigameBonusTime: 0
   optionB:
     optionText: "K\u1EC7 n\xF3, cu\u1ED9c \u0111\u1EDDi ai ng\u01B0\u1EDDi n\u1EA5y
       s\u1ED1ng."
+    responseText: "K\u1EC7 n\xF3, cu\u1ED9c \u0111\u1EDDi ai ng\u01B0\u1EDDi n\u1EA5y
+      s\u1ED1ng."
     scoreImpact: 0
+    minigameBonusTime: 0
+  isFinalTurn: 0
