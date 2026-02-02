@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C5_Turn3_KhoangLang
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation: []
+  internalThought: "Gi\xF3 th\u1ED5i qua b\xE3i \u0111\u1EA5t tr\u1ED1ng. M\u1ED9t
+    h\u1EA1t m\u1EA7m nh\u1ECF n\u1EB1m tr\xEAn m\u1EB7t \u0111\u1EA5t kh\xF4 c\u1EB1n."
+  optionA:
+    optionText: "\u0110\u1EA5t n\xE0y c\u1EB1n c\u1ED7i th\u1EBF, tr\u1ED3ng g\xEC
+      s\u1ED1ng \u0111\u01B0\u1EE3c. Gi\u1ED1ng nh\u01B0 cu\u1ED9c \u0111\u1EDDi
+      m\xECnh v\u1EADy."
+    responseText: "\u0110\u1EA5t n\xE0y c\u1EB1n c\u1ED7i th\u1EBF, tr\u1ED3ng g\xEC
+      s\u1ED1ng \u0111\u01B0\u1EE3c. Gi\u1ED1ng nh\u01B0 cu\u1ED9c \u0111\u1EDDi
+      m\xECnh v\u1EADy."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  optionB:
+    optionText: "N\xF3 v\u1EABn c\u1ED1 n\u1EA3y m\u1EA7m k\xECa. N\u1EBFu \u0111\u01B0\u1EE3c
+      ch\u0103m s\xF3c, n\xF3 s\u1EBD th\xE0nh c\xE2y l\u1EDBn."
+    responseText: "N\xF3 v\u1EABn c\u1ED1 n\u1EA3y m\u1EA7m k\xECa. N\u1EBFu \u0111\u01B0\u1EE3c
+      ch\u0103m s\xF3c, n\xF3 s\u1EBD th\xE0nh c\xE2y l\u1EDBn."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  isFinalTurn: 0

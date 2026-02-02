@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fa7a4edd6f5b2419316b4941f71be4, type: 3}
+  m_Name: Chapter4_SuVoCam
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterData
+  chapterName: 
+  chatSequence:
+  - {fileID: 11400000, guid: cfc449644522dc54cb92c21a2eebd55e, type: 2}
+  - {fileID: 11400000, guid: b3e18b880bbdd16478a1963f6d1b113d, type: 2}
+  - {fileID: 11400000, guid: 914b23dba896c67489a28a75494fd221, type: 2}
+  - {fileID: 11400000, guid: c29a65d7a340ccd44abd7bd763bbd690, type: 2}
+  - {fileID: 11400000, guid: 4e97d5551c2febd4ba2b30450aa94b77, type: 2}
+  minigameName: 
+  maxMinigameScore: 20

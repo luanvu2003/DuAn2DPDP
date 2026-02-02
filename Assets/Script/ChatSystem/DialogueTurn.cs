@@ -1,13 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Turn", menuName = "TwoWorlds/DialogueTurn")]
 public class DialogueTurn : ScriptableObject
 {
-    [Header("--- THÔNG TIN NPC ---")]
-    public string speakerName;
-    [TextArea(3, 5)] public string npcDialogue; // Tin nhắn của Hùng/Lan/Ẩn danh
-    [Tooltip("Tích vào để hiện bong bóng chat của NPC. Bỏ tích nếu đây là lời dẫn truyện/hành động không lời.")]
-    public bool showNPCBubble = true; // <--- THÊM DÒNG NÀY (Mặc định True)
+    [Header("--- HỘI THOẠI GROUP CHAT (MỚI) ---")]
+    // Thay thế 2 biến cũ bằng List này
+    public List<NPCMessage> conversation;
 
     [Header("--- SUY NGHĨ CỦA NAM (MỚI) ---")]
     [TextArea(2, 4)] public string internalThought; // "Nam (Nghĩ): Lại là nó..."
@@ -22,6 +21,17 @@ public class DialogueTurn : ScriptableObject
     public bool isFinalTurn = false; // Đánh dấu đây là lượt cuối (Lượt 5) để chuyển game
 }
 
+[System.Serializable]
+public class NPCMessage
+{
+    public string speakerName; // Tên người nói
+    [TextArea(2, 5)] public string content; // Nội dung
+
+    [Tooltip("Tích vào để hiện bong bóng. Bỏ tích để làm lời dẫn/hành động.")]
+    public bool showBubble = true; // <--- THÊM CÁI NÀY VÀO (Mặc định True)
+
+    public float delayDuration = 1.0f; // Thời gian chờ
+}
 [System.Serializable]
 public class OptionData
 {

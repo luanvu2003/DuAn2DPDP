@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C5_Turn2_CamDoQuayLai
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation:
+  - speakerName: "Fan h\xE2m m\u1ED9"
+    content: "Anh Nam \u01A1i, livestream k\u1EC3 chuy\u1EC7n c\u1EE9u ng\u01B0\u1EDDi
+      \u0111i anh!"
+    showBubble: 1
+    delayDuration: 0
+  internalThought: "Pin \u0111i\u1EC7n tho\u1EA1i c\xF2n 5%."
+  optionA:
+    optionText: "Ph\u1EA3i ch\u1EA1y \u0111i s\u1EA1c pin ngay \u0111\u1EC3 c\xF2n
+      livestream."
+    responseText: "Ph\u1EA3i ch\u1EA1y \u0111i s\u1EA1c pin ngay \u0111\u1EC3 c\xF2n
+      livestream."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  optionB:
+    optionText: "H\u1EBFt pin th\xEC c\xE0ng t\u1ED1t. \u0110\u01B0\u1EE3c y\xEAn
+      t\u0129nh."
+    responseText: "H\u1EBFt pin th\xEC c\xE0ng t\u1ED1t. \u0110\u01B0\u1EE3c y\xEAn
+      t\u0129nh."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  isFinalTurn: 0
