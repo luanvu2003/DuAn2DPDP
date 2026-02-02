@@ -10,23 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
-  m_Name: C2_Turn1_MoiCau
+  m_Name: C2_Turn3_SuLuaChonKhac
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
-  speakerName: Spam
-  npcDialogue: "Vi\u1EC7c nh\u1EB9 l\u01B0\u01A1ng cao. N\u1EA1p 200k nh\u1EADn ngay
-    5 tri\u1EC7u sau 10 ph\xFAt. Cam k\u1EBFt uy t\xEDn."
-  internalThought: "Trong t\xFAi m\xECnh c\xF2n \u0111\xFAng 200k cu\u1ED1i c\xF9ng..."
+  speakerName: "C\xF4 T\u01B0"
+  npcDialogue: "Nam \u01A1i, c\xF4 \u0111au ch\xE2n qu\xE1. Con qua ch\u1EA1y gi\xFAp
+    c\xF4 m\u1EA5y \u0111\u01A1n h\xE0ng, c\xF4 tr\u1EA3 ti\u1EC1n c\xF4ng li\u1EC1n."
+  showNPCBubble: 1
+  internalThought: "L\xE0m shipper \xE0? N\u1EAFng n\xF4i c\u1EF1c kh\u1ED5 m\xE0
+    \u0111\u01B0\u1EE3c c\xF3 m\u1EA5y \u0111\u1ED3ng..."
   optionA:
-    optionText: "Th\u1EADt kh\xF4ng? C\xF3 l\u1EEBa \u0111\u1EA3o kh\xF4ng \u0111\u1EA5y?"
+    optionText: "Con b\u1EADn l\u1EAFm c\xF4 \u01A1i."
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 1
   optionB:
-    optionText: "L\xE0m g\xEC c\xF3 chuy\u1EC7n ti\u1EC1n t\u1EEB tr\xEAn tr\u1EDDi
-      r\u01A1i xu\u1ED1ng."
+    optionText: "V\xE2ng, c\xF4 \u0111\u1EE3i con ch\xFAt con qua ngay."
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
   isFinalTurn: 0

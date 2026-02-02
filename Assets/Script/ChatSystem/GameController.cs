@@ -71,10 +71,16 @@ public class GameController : MonoBehaviour
     void LoadTurn(DialogueTurn turn)
     {
         // --- SỬA ĐOẠN NÀY ---
-        // Chỉ sinh bong bóng NPC nếu có nội dung thoại
-        if (!string.IsNullOrEmpty(turn.npcDialogue))
+        // Logic: Phải thỏa mãn cả 2 điều kiện:
+        // 1. Dấu tích showNPCBubble được BẬT
+        // 2. Nội dung không được trống
+        if (turn.showNPCBubble && !string.IsNullOrEmpty(turn.npcDialogue))
         {
             SpawnBubble(npcBubblePrefab, turn.npcDialogue, turn.speakerName);
+        }
+        else
+        {
+            Debug.Log("Turn này NPC không nói gì (hoặc bị tắt hiển thị).");
         }
         // --------------------
 

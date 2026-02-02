@@ -6,6 +6,8 @@ public class DialogueTurn : ScriptableObject
     [Header("--- THÔNG TIN NPC ---")]
     public string speakerName;
     [TextArea(3, 5)] public string npcDialogue; // Tin nhắn của Hùng/Lan/Ẩn danh
+    [Tooltip("Tích vào để hiện bong bóng chat của NPC. Bỏ tích nếu đây là lời dẫn truyện/hành động không lời.")]
+    public bool showNPCBubble = true; // <--- THÊM DÒNG NÀY (Mặc định True)
 
     [Header("--- SUY NGHĨ CỦA NAM (MỚI) ---")]
     [TextArea(2, 4)] public string internalThought; // "Nam (Nghĩ): Lại là nó..."

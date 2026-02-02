@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
-  m_Name: C2_Turn1_MoiCau
+  m_Name: C2_Turn5_ChotHa
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
-  speakerName: Spam
-  npcDialogue: "Vi\u1EC7c nh\u1EB9 l\u01B0\u01A1ng cao. N\u1EA1p 200k nh\u1EADn ngay
-    5 tri\u1EC7u sau 10 ph\xFAt. Cam k\u1EBFt uy t\xEDn."
-  internalThought: "Trong t\xFAi m\xECnh c\xF2n \u0111\xFAng 200k cu\u1ED1i c\xF9ng..."
+  speakerName: 
+  npcDialogue: 
+  showNPCBubble: 0
+  internalThought: "Tay c\u1EA7m \u0111i\u1EC7n tho\u1EA1i, ng\xF3n tay l\u01A1 l\u1EEDng
+    tr\xEAn n\xFAt chuy\u1EC3n ti\u1EC1n cho b\u1ECDn l\u1EEBa \u0111\u1EA3o."
   optionA:
-    optionText: "Th\u1EADt kh\xF4ng? C\xF3 l\u1EEBa \u0111\u1EA3o kh\xF4ng \u0111\u1EA5y?"
+    optionText: "CHUY\u1EC2N KHO\u1EA2N!"
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
   optionB:
-    optionText: "L\xE0m g\xEC c\xF3 chuy\u1EC7n ti\u1EC1n t\u1EEB tr\xEAn tr\u1EDDi
-      r\u01A1i xu\u1ED1ng."
+    optionText: "X\xF3a app l\u1EEBa \u0111\u1EA3o. \u0110i l\xE0m th\xF4i!"
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
