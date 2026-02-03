@@ -26,7 +26,11 @@ MonoBehaviour:
       kh\xF4ng c\xF3 b\u1EC7 \u0111\u1EE1."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "L\xE0 do m\xECnh l\u01B0\u1EDDi bi\u1EBFng. C\u0103n ph\xF2ng n\xE0y
       ph\u1EA3n \xE1nh ch\xEDnh con ng\u01B0\u1EDDi m\xECnh."
@@ -34,5 +38,9 @@ MonoBehaviour:
       n\xE0y ph\u1EA3n \xE1nh ch\xEDnh con ng\u01B0\u1EDDi m\xECnh."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

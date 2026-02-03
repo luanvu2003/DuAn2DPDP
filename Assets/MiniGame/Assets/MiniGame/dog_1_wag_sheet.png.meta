@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: 2ad9a15b98b0c0049bbb1f0785fd1515
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4047708985017048029
+    second: dog_1_wag_sheet_0
+  - first:
+      213: -7780795749033586616
+    second: dog_1_wag_sheet_1
+  - first:
+      213: -1401472595609723411
+    second: dog_1_wag_sheet_2
+  - first:
+      213: 2292571927958233853
+    second: dog_1_wag_sheet_3
+  - first:
+      213: -4130262025391793729
+    second: dog_1_wag_sheet_4
+  - first:
+      213: 4936398351657404057
+    second: dog_1_wag_sheet_5
+  - first:
+      213: -2162308684572400984
+    second: dog_1_wag_sheet_6
+  - first:
+      213: 5806025099500682881
+    second: dog_1_wag_sheet_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dog_1_wag_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 41
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddb191e40e95c2830800000000000000
+      internalID: 4047708985017048029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_1_wag_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 40
+        height: 29
+      alignment: 9
+      pivot: {x: 0.48748073, y: 0.49886334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 840dbfc9d7f050490800000000000000
+      internalID: -7780795749033586616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_1_wag_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 39
+        height: 29
+      alignment: 9
+      pivot: {x: 0.47543824, y: 0.50137633}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deddc308918fc8ce0800000000000000
+      internalID: -1401472595609723411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_1_wag_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 40
+        height: 29
+      alignment: 9
+      pivot: {x: 0.48732454, y: 0.4992715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df2abfb950ad0df10800000000000000
+      internalID: 2292571927958233853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_1_wag_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 41
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb99c3b229c5ea6c0800000000000000
+      internalID: -4130262025391793729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_1_wag_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 41
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9960d5c852c918440800000000000000
+      internalID: 4936398351657404057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_1_wag_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 0
+        width: 42
+        height: 29
+      alignment: 9
+      pivot: {x: 0.50990516, y: 0.49889657}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a2e15135bfedf1e0800000000000000
+      internalID: -2162308684572400984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_1_wag_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 0
+        width: 41
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e7dbcf015239050800000000000000
+      internalID: 5806025099500682881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b91c2753702e94e4aa62682315f9f45a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dog_1_wag_sheet_0: 4047708985017048029
+      dog_1_wag_sheet_1: -7780795749033586616
+      dog_1_wag_sheet_2: -1401472595609723411
+      dog_1_wag_sheet_3: 2292571927958233853
+      dog_1_wag_sheet_4: -4130262025391793729
+      dog_1_wag_sheet_5: 4936398351657404057
+      dog_1_wag_sheet_6: -2162308684572400984
+      dog_1_wag_sheet_7: 5806025099500682881
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

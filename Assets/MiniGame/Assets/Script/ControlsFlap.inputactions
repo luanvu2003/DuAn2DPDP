@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "ControlsFlap",
+    "maps": [
+        {
+            "name": "Flap",
+            "id": "413028b2-51b8-4f3a-b938-ff5c62abc619",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "53a46fe6-b28d-4d9d-8c9a-d16718fc2632",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dc823652-08ce-42b8-ac56-19d2eed473d0",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
