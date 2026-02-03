@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "MouseClick",
+    "maps": [
+        {
+            "name": "Mouse",
+            "id": "763c3256-48d4-4f23-8dc7-296f1c7f0c22",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "16ec6951-2f4a-4dbd-a5a8-aef839eab34a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Point",
+                    "type": "Value",
+                    "id": "e938b7a2-74d0-44e1-a57a-bd70f59c6e71",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8e8252ef-9ace-44e0-ab3d-5a329d61c3b6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f77dd75-3591-43bd-8622-40b7a1213a59",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

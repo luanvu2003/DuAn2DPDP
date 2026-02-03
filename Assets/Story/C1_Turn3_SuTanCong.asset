@@ -27,6 +27,10 @@ MonoBehaviour:
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "H\u01A1i \u0111\xE2u m\xE0 c\xE3i nhau v\u1EDBi ng\u01B0\u1EDDi
       kh\xF4ng hi\u1EC3u m\xECnh."
@@ -34,5 +38,9 @@ MonoBehaviour:
       kh\xF4ng hi\u1EC3u m\xECnh."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

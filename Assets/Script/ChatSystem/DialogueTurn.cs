@@ -5,11 +5,10 @@ using UnityEngine;
 public class DialogueTurn : ScriptableObject
 {
     [Header("--- HỘI THOẠI GROUP CHAT (MỚI) ---")]
-    // Thay thế 2 biến cũ bằng List này
     public List<NPCMessage> conversation;
 
     [Header("--- SUY NGHĨ CỦA NAM (MỚI) ---")]
-    [TextArea(2, 4)] public string internalThought; // "Nam (Nghĩ): Lại là nó..."
+    [TextArea(2, 4)] public string internalThought;
 
     [Header("--- LỰA CHỌN A ---")]
     public OptionData optionA;
@@ -18,29 +17,34 @@ public class DialogueTurn : ScriptableObject
     public OptionData optionB;
 
     [Header("--- CẤU HÌNH ĐẶC BIỆT ---")]
-    public bool isFinalTurn = false; // Đánh dấu đây là lượt cuối (Lượt 5) để chuyển game
+    public bool isFinalTurn = false; // Đánh dấu lượt cuối
 }
 
 [System.Serializable]
 public class NPCMessage
 {
-    public string speakerName; // Tên người nói
-    [TextArea(2, 5)] public string content; // Nội dung
+    public string speakerName;
+    [TextArea(2, 5)] public string content;
 
     [Tooltip("Tích vào để hiện bong bóng. Bỏ tích để làm lời dẫn/hành động.")]
-    public bool showBubble = true; // <--- THÊM CÁI NÀY VÀO (Mặc định True)
+    public bool showBubble = true;
 
-    public float delayDuration = 1.0f; // Thời gian chờ
+    public float delayDuration = 1.0f;
 }
+
 [System.Serializable]
 public class OptionData
 {
-    public string optionText;   // Chữ hiện trên nút
-    public string responseText; // Tin nhắn sẽ gửi đi (Nếu để trống = Im lặng/Hành động)
-    public int scoreImpact;     // Điểm cộng/trừ
+    public string optionText;
+    public string responseText;
+    public int scoreImpact;
 
-    // Thêm biến này để quy định thời gian cho Minigame (Dùng cho lượt 5)
     public float minigameBonusTime = 0;
-    [Tooltip("Tích vào để hiện bong bóng chat. Bỏ tích nếu đây là hành động/suy nghĩ.")]
-    public bool showBubble = true;  // <--- THÊM DÒNG NÀY (Mặc định là True)
+    public bool showBubble = true;
+
+    [Header("--- NHIỆM VỤ (Chỉ dùng cho Option B khi isFinalTurn) ---")]
+    public string questText;     // Nội dung nhiệm vụ
+    public string targetTag;     // Tag của GameObject mà Player phải đến
+    public string questScene;    // Scene nhiệm vụ
+    public string originScene;   // Scene gốc để quay lại
 }
