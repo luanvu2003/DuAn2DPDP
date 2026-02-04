@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class UIQuest : MonoBehaviour
 {
     public static UIQuest Instance;
-    public Text questText;
+    public TextMeshProUGUI questText;
 
     private void Awake()
     {
@@ -13,7 +13,7 @@ public class UIQuest : MonoBehaviour
 
     public void ShowQuest(string text)
     {
-        questText.text = "Nhiệm vụ: " + text;
+        questText.text = "Nhiệm vụ:  "+ text ;
     }
 
     public void CompleteQuest()

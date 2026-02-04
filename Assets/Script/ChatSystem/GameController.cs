@@ -161,43 +161,55 @@ public class GameController : MonoBehaviour
 
         StoryData.TotalScore += selectedOption.scoreImpact;
 
-        // ... (Đoạn xử lý hiện chat giữ nguyên) ...
         if (selectedOption.showBubble && !string.IsNullOrEmpty(selectedOption.responseText))
         {
             SpawnBubble(playerBubblePrefab, selectedOption.responseText, "Me");
         }
 
-        // Tắt UI
         choicePanel.SetActive(false);
         if (thoughtPanel != null) thoughtPanel.SetActive(false);
 
-        // --- SỬA ĐOẠN NÀY (QUAN TRỌNG) ---
         if (turn.isFinalTurn)
         {
-            // 1. Đánh dấu là đã XONG lượt này rồi (để lần sau mở lên không bị hiện lại)
             StoryData.CurrentTurnIndex++;
 
-            // 2. Chuyển sang Minigame
-            StartCoroutine(EndChapterAndStartMinigame(selectedOption.minigameBonusTime));
+            if (choiceIndex == 1) // chỉ khi chọn B
+            {
+                StartCoroutine(EndChapterAndStartMinigame(selectedOption.minigameBonusTime));
+            }
+            else
+            {
+                Debug.Log("Option A ở lượt cuối: không tạo nhiệm vụ.");
+                // Có thể kết thúc chương hoặc chuyển sang logic khác
+            }
         }
         else
         {
-            NextTurn(); // Hàm này đã có sẵn lệnh tăng index rồi nên không cần sửa
+            NextTurn();
         }
     }
 
+
     IEnumerator EndChapterAndStartMinigame(float bonusTime)
     {
-        yield return new WaitForSeconds(1f); // Đợi 1 xíu cho mượt
+        yield return new WaitForSeconds(1f);
 
-        Debug.Log("🚀 CHUYỂN SANG DỌN RÁC! Bonus Time: " + bonusTime);
+        Debug.Log("🚀 CHUYỂN SANG NHIỆM VỤ! Bonus Time: " + bonusTime);
 
-        // Lưu thời gian bonus vào StoryData để Minigame đọc được
-        // StoryData.BonusTime = bonusTime; 
-
-        // Load Scene Minigame (Ví dụ tên scene là "MiniGame_DonRac")
-        // UnityEngine.SceneManagement.SceneManager.LoadScene("MiniGame_DonRac");
+        DialogueTurn currentTurn = allChapters[StoryData.CurrentChapterIndex].chatSequence[StoryData.CurrentTurnIndex - 1];
+        QuestManager questManager = FindObjectOfType<QuestManager>();
+        if (questManager != null)
+        {
+            questManager.StartQuest(
+                currentTurn.optionB.questText,
+                currentTurn.optionB.targetTag,
+                currentTurn.optionB.questScene,
+                currentTurn.optionB.originScene
+            );
+        }
     }
+
+
 
     void NextTurn()
     {
