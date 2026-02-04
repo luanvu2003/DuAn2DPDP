@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using System.Collections;
 
 public class MiniGameManager : MonoBehaviour
@@ -41,15 +40,25 @@ public class MiniGameManager : MonoBehaviour
         if (collected >= leafCount)
         {
             missionText.text = "Hoàn thành nhiệm vụ!";
-            StartCoroutine(LoadSceneAfterDelay(4f)); // chỉ dùng coroutine
+            StartCoroutine(FinishQuestAfterDelay(4f));
         }
     }
-    private IEnumerator LoadSceneAfterDelay(float delay)
+
+    private IEnumerator FinishQuestAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("BedRoom");
-    }
 
+        // Gọi QuestManager để đánh dấu hoàn thành và quay lại scene gốc
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.CompleteQuest();
+        }
+        else
+        {
+            // Nếu không có QuestManager thì fallback load BedRoom
+            SceneManager.LoadScene("BedRoom");
+        }
+    }
 
     void UpdateMissionText()
     {
