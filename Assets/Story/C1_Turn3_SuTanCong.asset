@@ -16,7 +16,7 @@ MonoBehaviour:
   - speakerName: "H\xF9ng"
     content: "Startup h\u1EA3? Hay l\xE0 th\u1EA5t nghi\u1EC7p n\u1EB1m nh\xE0? Th\xF4i
       ngh\xE8o th\xEC b\u1EA3o anh em bank cho 50k \u0103n s\xE1ng."
-    showBubble: 0
+    showBubble: 1
     delayDuration: 0
   internalThought: "50k? N\xF3 coi m\xECnh l\xE0 \u0103n m\xE0y \xE0?"
   optionA:

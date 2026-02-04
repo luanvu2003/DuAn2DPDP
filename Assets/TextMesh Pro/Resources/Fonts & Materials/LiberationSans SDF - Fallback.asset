@@ -550,6 +550,9 @@ MonoBehaviour:
     m_Unicode: 7901
     m_GlyphIndex: 1735
     m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 7841
     m_GlyphIndex: 1675
