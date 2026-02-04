@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fa7a4edd6f5b2419316b4941f71be4, type: 3}
+  m_Name: Chapter5_HatGiong
+  m_EditorClassIdentifier: Assembly-CSharp::ChapterData
+  chapterName: 
+  chatSequence:
+  - {fileID: 11400000, guid: 0010d51d3424c8e42b24d741363261ec, type: 2}
+  - {fileID: 11400000, guid: 301817a12c4932f45a0f0d7a35cf4d4f, type: 2}
+  - {fileID: 11400000, guid: 5758d2a8feba9a74898f427318e47aea, type: 2}
+  - {fileID: 11400000, guid: e31dab3c0a31d364caeae6d3ae23458f, type: 2}
+  - {fileID: 11400000, guid: 0f21338196de48b42b1a8f6aa99b0548, type: 2}
+  minigameName: 
+  maxMinigameScore: 20

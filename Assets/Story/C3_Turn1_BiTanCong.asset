@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C3_Turn1_BiTanCong
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation:
+  - speakerName: Anti-fan
+    content: "Th\u1EB1ng Nam n\xE0y nh\xECn m\u1EB7t h\xE3m t\xE0i, ch\u1EAFc ngo\xE0i
+      \u0111\u1EDDi s\u1ED1ng l\u1ED7i l\u1EAFm n\xEAn m\u1EDBi ngh\xE8o."
+    showBubble: 1
+    delayDuration: 0
+  internalThought: "M\xE1u d\u1ED3n l\xEAn n\xE3o..."
+  optionA:
+    optionText: "M\xE0y bi\u1EBFt b\u1ED1 m\xE0y l\xE0 ai kh\xF4ng? Tao t\xECm ra
+      m\xE0y tao xi\xEAn!"
+    responseText: "M\xE0y bi\u1EBFt b\u1ED1 m\xE0y l\xE0 ai kh\xF4ng? Tao t\xECm
+      ra m\xE0y tao xi\xEAn!"
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 1
+  optionB:
+    optionText: "L\u1EA1i m\u1EA5y \u0111\u1EE9a tr\u1EBB tr\xE2u anh h\xF9ng b\xE0n
+      ph\xEDm."
+    responseText: "L\u1EA1i m\u1EA5y \u0111\u1EE9a tr\u1EBB tr\xE2u anh h\xF9ng b\xE0n
+      ph\xEDm."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 1
+  isFinalTurn: 0

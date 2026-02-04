@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
   m_Name: C1_Turn1_KhoiDau
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
-  speakerName: "H\xF9ng"
-  npcDialogue: "M\u1EDBi l\u1EA5y con M\u1EB9c GLC, anh em cu\u1ED1i tu\u1EA7n \u0111i
-    r\u1EEDa xe kh\xF4ng?"
+  conversation:
+  - speakerName: "H\xF9ng"
+    content: "M\u1EDBi l\u1EA5y con M\u1EB9c GLC, anh em cu\u1ED1i tu\u1EA7n \u0111i
+      r\u1EEDa xe kh\xF4ng?"
+    showBubble: 1
+    delayDuration: 0
   internalThought: "L\u1EA1i l\xE0 n\xF3. L\xFAc n\xE0o c\u0169ng khoe c\u1EE7a."
   optionA:
     optionText: "M\u1EDBi tr\xFAng s\u1ED1 hay sao m\xE0 gi\xE0u nhanh th\u1EBF?
@@ -24,6 +27,10 @@ MonoBehaviour:
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "K\u1EC7 n\xF3, cu\u1ED9c \u0111\u1EDDi ai ng\u01B0\u1EDDi n\u1EA5y
       s\u1ED1ng."
@@ -31,5 +38,9 @@ MonoBehaviour:
       s\u1ED1ng."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

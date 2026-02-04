@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C3_Turn5_ChuocLoi
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation: []
+  internalThought: "C\u1EA7m s\u1EE3i d\xE2y x\xEDch l\xEAn."
+  optionA:
+    optionText: "Th\xF4i \u0111i ra ngo\xE0i t\xED cho \u0111\u1EE1 nh\u1EE9c \u0111\u1EA7u.
+      \u0110i nhanh r\u1ED3i v\u1EC1 tao c\xF2n ch\u1EEDi nhau ti\u1EBFp."
+    responseText: "Th\xF4i \u0111i ra ngo\xE0i t\xED cho \u0111\u1EE1 nh\u1EE9c \u0111\u1EA7u.
+      \u0110i nhanh r\u1ED3i v\u1EC1 tao c\xF2n ch\u1EEDi nhau ti\u1EBFp."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  optionB:
+    optionText: "\u0110i d\u1EA1o c\xF4ng vi\xEAn nh\xE9? Tao s\u1EBD kh\xF4ng c\u1EA7m
+      \u0111i\u1EC7n tho\u1EA1i n\u1EEFa."
+    responseText: "\u0110i d\u1EA1o c\xF4ng vi\xEAn nh\xE9? Tao s\u1EBD kh\xF4ng
+      c\u1EA7m \u0111i\u1EC7n tho\u1EA1i n\u1EEFa."
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  isFinalTurn: 1

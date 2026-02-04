@@ -1,41 +1,44 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Để chuyển cảnh
+using UnityEngine.SceneManagement; 
+using System.Collections; // Cần thêm cái này để dùng Coroutine
 
 public class BedInteract : MonoBehaviour
 {
+    [Header("UI")]
     public GameObject sleepText; // Dòng chữ "Nhấn E để đi ngủ"
+
     private bool isPlayerNearby = false;
+    private bool isSleeping = false; // Biến cờ quan trọng: để chặn spam nút E
 
     void Update()
     {
-        // Nếu đang đứng cạnh giường và bấm E
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
+        // LOGIC: Phải thỏa mãn 3 điều kiện:
+        // 1. Đang đứng gần (isPlayerNearby)
+        // 2. Bấm nút E
+        // 3. Chưa bấm ngủ trước đó (!isSleeping) -> Để tránh bấm 2 lần
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E) && !isSleeping)
         {
-            GoToSleep();
+            StartCoroutine(GoToSleepProcess());
         }
     }
 
-    void GoToSleep()
+    // Dùng Coroutine để xử lý tuần tự (Tránh việc Scene reload quá nhanh khi chưa kịp save)
+    IEnumerator GoToSleepProcess()
     {
+        isSleeping = true;          // 1. Khóa ngay nút E lại (không cho bấm nữa)
+        sleepText.SetActive(false); // 2. Tắt dòng chữ "Nhấn E..." đi ngay cho đỡ vướng mắt
+
         Debug.Log("💤 Đang đi ngủ... Kết thúc ngày " + (StoryData.CurrentChapterIndex + 1));
 
-        // 1. TĂNG CHƯƠNG LÊN (Quan trọng nhất)
-        StoryData.CurrentChapterIndex++; 
-        
-        // 2. RESET LẠI TIN NHẮN (Để ngày mai chat từ đầu)
-        StoryData.CurrentTurnIndex = 0;
+        // 3. XỬ LÝ DỮ LIỆU
+        StoryData.CurrentChapterIndex++; // Tăng ngày
+        StoryData.CurrentTurnIndex = 0;  // Reset tin nhắn về 0
+        SaveGameData();                  // Lưu lại
 
-        // 3. (Tùy chọn) LƯU GAME VÀO Ổ CỨNG LUÔN
-        SaveGameData();
+        // (Tùy chọn) Bạn có thể delay 0.5s - 1s ở đây để làm hiệu ứng màn hình đen nếu muốn
+        yield return new WaitForSeconds(0.5f); 
 
-        // 4. CHUYỂN CẢNH (Sang ngày mới)
-        // Nếu game bạn chỉ có 1 map Phòng Ngủ thì reload lại chính nó
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
-        
-        // Hoặc nếu bạn có scene riêng cho từng ngày
-        // SceneManager.LoadScene("Day" + StoryData.CurrentChapterIndex);
-        
-        // Ở đây mình ví dụ reload lại scene hiện tại để test:
+        // 4. CHUYỂN CẢNH / RELOAD
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -46,12 +49,13 @@ public class BedInteract : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // --- PHẦN XỬ LÝ VA CHẠM (Trigger) ---
+    // --- PHẦN TRIGGER: CHỈ DÙNG ĐỂ BẬT/TẮT TEXT ---
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            sleepText.SetActive(true);
+            // Đi vào -> Chỉ hiện Text lên thôi, KHÔNG làm gì khác
+            if (sleepText != null) sleepText.SetActive(true);
             isPlayerNearby = true;
         }
     }
@@ -60,7 +64,8 @@ public class BedInteract : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            sleepText.SetActive(false);
+            // Đi ra -> Tắt Text
+            if (sleepText != null) sleepText.SetActive(false);
             isPlayerNearby = false;
         }
     }

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
+  m_Name: C2_Turn5_ChotHa
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
+  conversation: []
+  internalThought: "Tay c\u1EA7m \u0111i\u1EC7n tho\u1EA1i, ng\xF3n tay l\u01A1 l\u1EEDng
+    tr\xEAn n\xFAt chuy\u1EC3n ti\u1EC1n cho b\u1ECDn l\u1EEBa \u0111\u1EA3o."
+  optionA:
+    optionText: "CHUY\u1EC2N KHO\u1EA2N!"
+    responseText: "CHUY\u1EC2N KHO\u1EA2N!"
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  optionB:
+    optionText: "X\xF3a app l\u1EEBa \u0111\u1EA3o. \u0110i l\xE0m th\xF4i!"
+    responseText: "X\xF3a app l\u1EEBa \u0111\u1EA3o. \u0110i l\xE0m th\xF4i!"
+    scoreImpact: 0
+    minigameBonusTime: 0
+    showBubble: 0
+  isFinalTurn: 0
