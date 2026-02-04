@@ -10,7 +10,6 @@ public class QuestManager : MonoBehaviour
     private string questScene;
     private string originScene;
     private bool questActive = false;
-    private bool questCompleted = false;
 
     private void Awake()
     {
@@ -24,18 +23,26 @@ public class QuestManager : MonoBehaviour
         questScene = questSceneName;
         originScene = originSceneName;
         questActive = true;
-        questCompleted = false;
 
-        Debug.Log("Nhiệm vụ bắt đầu: " + questText);
         UIQuest.Instance.ShowQuest(currentQuestText);
+    }
+
+    private void Update()
+    {
+        // Khi đang có nhiệm vụ và người chơi nhấn F gần object có tag
+        if (questActive && Input.GetKeyDown(KeyCode.F))
+        {
+            GameObject target = GameObject.FindGameObjectWithTag(targetTag);
+            if (target != null)
+            {
+                SceneManager.LoadScene(questScene);
+            }
+        }
     }
 
     public void CompleteQuest()
     {
-        questCompleted = true;
         questActive = false;
-        Debug.Log("Nhiệm vụ hoàn thành: " + currentQuestText);
-
         UIQuest.Instance.CompleteQuest();
 
         // Quay lại scene gốc
@@ -43,12 +50,5 @@ public class QuestManager : MonoBehaviour
         {
             SceneManager.LoadScene(originScene);
         }
-        else
-        {
-            Debug.LogWarning("Origin scene chưa được thiết lập!");
-        }
     }
-
-    public bool IsQuestActive() => questActive;
-    public bool IsQuestCompleted() => questCompleted;
 }
