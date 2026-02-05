@@ -7,13 +7,12 @@ public class IntroCutscene : MonoBehaviour
     public bool isTesting = true;
 
     [Header("--- CAMERA & MAP (QUAN TRỌNG) ---")]
-    public Camera mainCam;                // Kéo Main Camera vào
-    public Collider2D mapBounds;          // Kéo cái MapArea (PolygonCollider2D) vào
-    public float smoothTime = 0.2f;       // Độ mượt khi camera chạy theo (0.1 = nhanh, 0.5 = chậm)
-
+    public Camera mainCam;                
+    public Collider2D mapBounds;          
+    public float smoothTime = 0.2f;       
     [Header("--- ZOOM SETTING ---")]
-    public float zoomSize = 2.5f;         // Zoom cận cảnh
-    public float normalSize = 5f;         // Zoom bình thường
+    public float zoomSize = 2.5f;         
+    public float normalSize = 5f;         
     public float zoomSpeed = 2f;
 
     [Header("--- DIỄN VIÊN & ĐẠO CỤ ---")]
