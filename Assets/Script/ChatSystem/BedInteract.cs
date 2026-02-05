@@ -25,6 +25,16 @@ public class BedInteract : MonoBehaviour
     // Dùng Coroutine để xử lý tuần tự (Tránh việc Scene reload quá nhanh khi chưa kịp save)
     IEnumerator GoToSleepProcess()
     {
+        // 🔥 RESET QUEST KHI QUA NGÀY MỚI
+        QuestData.HasActiveQuest = false;
+        QuestData.IsQuestCompleted = false;
+        QuestData.ShouldShowQuestUI = false;
+        QuestData.QuestText = "";
+        QuestData.TargetTag = "";
+        QuestData.QuestScene = "";
+        QuestData.OriginScene = "";
+
+
         isSleeping = true;          // 1. Khóa ngay nút E lại (không cho bấm nữa)
         sleepText.SetActive(false); // 2. Tắt dòng chữ "Nhấn E..." đi ngay cho đỡ vướng mắt
 
