@@ -1,23 +1,79 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
-public class UIQuest : MonoBehaviour
+public class QuestUI : MonoBehaviour
 {
-    public static UIQuest Instance;
-    public TextMeshProUGUI questText;
+    private TextMeshProUGUI questText;
 
-    private void Awake()
+    void Awake()
     {
-        if (Instance == null) Instance = this;
+        FindQuestText();
     }
 
-    public void ShowQuest(string text)
+    void OnEnable()
     {
-        questText.text = "Nhiệm vụ:  "+ text ;
+        // Khi load scene mới
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void CompleteQuest()
+    void OnDisable()
     {
-        questText.text = "Nhiệm vụ: Hoàn thành!";
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FindQuestText();
+        Refresh();
+    }
+
+    void FindQuestText()
+    {
+        GameObject textObj = GameObject.Find("QuestText");
+
+        if (textObj == null)
+        {
+            Debug.LogWarning("❌ Không tìm thấy GameObject tên 'QuestText' trong scene!");
+            return;
+        }
+
+        questText = textObj.GetComponent<TextMeshProUGUI>();
+
+        if (questText == null)
+        {
+            Debug.LogError("❌ 'QuestText' không có TextMeshProUGUI!");
+        }
+    }
+
+    public void Refresh()
+    {
+        if (questText == null) return;
+
+        // ❌ KHÔNG ĐƯỢC HIỆN nếu chưa bật cờ
+        if (!QuestData.ShouldShowQuestUI)
+        {
+            questText.gameObject.SetActive(false);
+            return;
+        }
+
+        // ❌ Chưa có quest
+        if (!QuestData.HasActiveQuest)
+        {
+            questText.gameObject.SetActive(false);
+            return;
+        }
+
+        questText.gameObject.SetActive(true);
+
+        if (QuestData.IsQuestCompleted)
+        {
+            questText.text = "✅ Hoàn thành nhiệm vụ:\n" + QuestData.QuestText;
+        }
+        else
+        {
+            questText.text = "🎯 Nhiệm vụ:\n" + QuestData.QuestText;
+        }
+    }
+
 }

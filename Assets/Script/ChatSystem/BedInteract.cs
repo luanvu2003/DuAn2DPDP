@@ -25,22 +25,33 @@ public class BedInteract : MonoBehaviour
     // Dùng Coroutine để xử lý tuần tự (Tránh việc Scene reload quá nhanh khi chưa kịp save)
     IEnumerator GoToSleepProcess()
     {
-        isSleeping = true;          // 1. Khóa ngay nút E lại (không cho bấm nữa)
-        sleepText.SetActive(false); // 2. Tắt dòng chữ "Nhấn E..." đi ngay cho đỡ vướng mắt
+        isSleeping = true;
+        sleepText.SetActive(false);
 
         Debug.Log("💤 Đang đi ngủ... Kết thúc ngày " + (StoryData.CurrentChapterIndex + 1));
 
-        // 3. XỬ LÝ DỮ LIỆU
-        StoryData.CurrentChapterIndex++; // Tăng ngày
-        StoryData.CurrentTurnIndex = 0;  // Reset tin nhắn về 0
-        SaveGameData();                  // Lưu lại
+        // ===============================
+        // 🔥 RESET QUEST (QUAN TRỌNG)
+        // ===============================
+        QuestData.HasActiveQuest = false;
+        QuestData.IsQuestCompleted = false;
+        QuestData.ShouldShowQuestUI = false;
+        QuestData.QuestText = "";
+        QuestData.TargetTag = "";
+        QuestData.QuestScene = "";
+        QuestData.OriginScene = "";
+        // ===============================
 
-        // (Tùy chọn) Bạn có thể delay 0.5s - 1s ở đây để làm hiệu ứng màn hình đen nếu muốn
-        yield return new WaitForSeconds(0.5f); 
+        // 3. XỬ LÝ DỮ LIỆU NGÀY MỚI
+        StoryData.CurrentChapterIndex++;
+        StoryData.CurrentTurnIndex = 0;
+        SaveGameData();
 
-        // 4. CHUYỂN CẢNH / RELOAD
+        yield return new WaitForSeconds(0.5f);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
 
     void SaveGameData()
     {
