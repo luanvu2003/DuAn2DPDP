@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd96dca9a9b60b242ae7b211e8abaf2f, type: 2}
   - {fileID: 11400000, guid: 7b6b15bcb1d9b674a909f82816cf8fc0, type: 2}
   - {fileID: 11400000, guid: 7f6921311e624c34384f1ce3ceae081d, type: 2}
-  minigameName: 
+  minigameName: MiniGameScene
   maxMinigameScore: 20

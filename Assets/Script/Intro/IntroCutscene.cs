@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class IntroCutscene : MonoBehaviour
 {
     [Header("--- CẤU HÌNH TEST ---")]
@@ -145,8 +145,15 @@ public class IntroCutscene : MonoBehaviour
         // Mở khóa điều khiển cho người chơi
         if (playerMovementScript) playerMovementScript.enabled = true;
         
-        // Kích hoạt cốt truyện nếu có
-        // if (GameController.Instance != null) GameController.Instance.StartChapter();
+        // --- QUAN TRỌNG: GỌI GAMEMANAGER ĐỂ HIỆN UI ---
+        if (UIThongSo.Instance != null)
+        {
+            UIThongSo.Instance.StartDay(); // Hàm này sẽ bật HUD_Panel lên
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Không tìm thấy GameManager! Hãy chắc chắn bạn đã tạo GameObject chứa script GameManager.");
+        }
     }
 
     // Hàm Zoom thủ công cho Main Camera
