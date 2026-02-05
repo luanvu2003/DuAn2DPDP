@@ -169,40 +169,25 @@ public class GameController : MonoBehaviour
         choicePanel.SetActive(false);
         if (thoughtPanel != null) thoughtPanel.SetActive(false);
 
-        // 🔥 TURN CUỐI (VD: TURN 5)
         if (turn.isFinalTurn)
         {
             StoryData.CurrentTurnIndex++;
 
-            // OPTION A → KHÔNG LÀM GÌ
-            if (choiceIndex == 0)
+            if (choiceIndex == 1) // chỉ khi chọn B
             {
-                Debug.Log("Option A: Không nhận nhiệm vụ");
-                return;
+                StartCoroutine(EndChapterAndStartMinigame(selectedOption.minigameBonusTime));
             }
-
-            // OPTION B → NHẬN NHIỆM VỤ
-            QuestData.HasActiveQuest = true;
-            QuestData.IsQuestCompleted = false;
-
-            // 🔥 CHỈ TURN 5 CHỌN B MỚI BẬT UI
-            QuestData.ShouldShowQuestUI = true;
-
-            QuestData.QuestText = selectedOption.questText;
-            QuestData.TargetTag = selectedOption.targetTag;
-            QuestData.QuestScene = selectedOption.questScene;
-            QuestData.OriginScene = selectedOption.originScene;
-
-
-            Debug.Log("📌 Đã nhận nhiệm vụ: " + QuestData.QuestText);
+            else
+            {
+                Debug.Log("Option A ở lượt cuối: không tạo nhiệm vụ.");
+                // Có thể kết thúc chương hoặc chuyển sang logic khác
+            }
         }
-
         else
         {
             NextTurn();
         }
     }
-
 
 
     IEnumerator EndChapterAndStartMinigame(float bonusTime)
