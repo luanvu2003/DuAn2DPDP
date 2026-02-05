@@ -1,13 +1,15 @@
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class StartText : MonoBehaviour
 {
     public float blinkSpeed = 0.5f;
-    public GameObject objectToEnable; // 👈 object sẽ bật khi click
+    public GameObject objectToEnable;
 
     private TextMeshProUGUI text;
     private bool gameStarted = false;
+    private Tween colorTween;
 
     void Start()
     {
@@ -15,15 +17,19 @@ public class StartText : MonoBehaviour
         Time.timeScale = 0f;
 
         if (objectToEnable != null)
-            objectToEnable.SetActive(false); // Tắt sẵn trước
+            objectToEnable.SetActive(false);
+
+        // 🔥 DOTWEEN đổi màu trắng <-> vàng
+        colorTween = text
+            .DOColor(Color.yellow, blinkSpeed)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true); // chạy dù Time.timeScale = 0
     }
 
     void Update()
     {
         if (gameStarted) return;
-
-        // Nhấp nháy chữ
-        text.enabled = Mathf.FloorToInt(Time.unscaledTime / blinkSpeed) % 2 == 0;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -36,12 +42,13 @@ public class StartText : MonoBehaviour
         gameStarted = true;
         Time.timeScale = 1f;
 
-        // 🔥 BẬT OBJECT KHÁC
+        // Dừng tween cho gọn
+        if (colorTween != null)
+            colorTween.Kill();
+
         if (objectToEnable != null)
             objectToEnable.SetActive(true);
 
-        // 🔥 TẮT TEXT
         gameObject.SetActive(false);
     }
 }
-
