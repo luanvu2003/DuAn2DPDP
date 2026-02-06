@@ -1,11 +1,18 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class VideoHPFillController : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public Image hpFillImage;
+
+    public GameObject youWinCanvas;   // canvas YOU WIN
+    public float winDelay = 2f;        // đợi mấy giây rồi chuyển scene
+    public string nextSceneName;
 
     public float drainSpeed = 0.2f;
     public float addPerPress = 0.1f;
@@ -20,6 +27,9 @@ public class VideoHPFillController : MonoBehaviour
             hpFillImage.gameObject.SetActive(true);
         }
 
+        if (youWinCanvas)
+            youWinCanvas.SetActive(false);
+
         if (videoPlayer)
             videoPlayer.loopPointReached += OnVideoEnd;
     }
@@ -29,24 +39,48 @@ public class VideoHPFillController : MonoBehaviour
         if (win) return;
         if (!videoPlayer || !videoPlayer.isPlaying) return;
 
-        // ===== NHẤN SPACE → TĂNG =====
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            hpFillImage.fillAmount += addPerPress;
+            hpFillImage.fillAmount = Mathf.Clamp01(
+                hpFillImage.fillAmount + addPerPress
+            );
         }
 
-        // ===== CHECK THẮNG NGAY =====
         if (hpFillImage.fillAmount >= 1f)
         {
-            win = true;
-            hpFillImage.fillAmount = 1f;
-            Debug.Log("YOU WIN");
-            return; // ⛔ KHÔNG CHO TỤT NỮA
+            WinGame();
+            return;
         }
 
-        // ===== TỤT =====
         hpFillImage.fillAmount -= drainSpeed * Time.deltaTime;
         hpFillImage.fillAmount = Mathf.Clamp01(hpFillImage.fillAmount);
+    }
+
+    void WinGame()
+    {
+        win = true;
+
+        // 🛑 DỪNG VIDEO
+        if (videoPlayer)
+        {
+            videoPlayer.Pause();
+            videoPlayer.enabled = false;
+        }
+
+        // 👀 HIỆN YOU WIN
+        if (youWinCanvas)
+            youWinCanvas.SetActive(true);
+
+        Debug.Log("YOU WIN");
+
+        // ⏳ ĐỢI → LOAD SCENE
+        StartCoroutine(LoadNextScene());
+    }
+
+    IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(winDelay);
+        SceneManager.LoadScene(nextSceneName);
     }
 
     void OnVideoEnd(VideoPlayer vp)

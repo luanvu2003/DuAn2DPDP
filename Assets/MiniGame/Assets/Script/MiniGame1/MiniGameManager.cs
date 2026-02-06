@@ -48,17 +48,11 @@ public class MiniGameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // Gọi QuestManager để đánh dấu hoàn thành và quay lại scene gốc
-        if (QuestManager.Instance != null)
-        {
-            QuestManager.Instance.CompleteQuest();
-        }
-        else
-        {
-            // Nếu không có QuestManager thì fallback load BedRoom
-            SceneManager.LoadScene("BedRoom");
-        }
+        QuestData.IsQuestCompleted = true;
+
+        SceneManager.LoadScene(QuestData.OriginScene);
     }
+
 
     void UpdateMissionText()
     {

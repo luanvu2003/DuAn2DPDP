@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51fa7a4edd6f5b2419316b4941f71be4, type: 3}
-  m_Name: Chapter1_Rac
+  m_Name: Chapter4_CT
   m_EditorClassIdentifier: Assembly-CSharp::ChapterData
-  chapterName: Chap1
+  chapterName: 
   chatSequence:
-  - {fileID: 11400000, guid: 1f851c429c47c63479b760979d1a1441, type: 2}
-  - {fileID: 11400000, guid: 9b10fb46ef05b5e4d9e2a2585ecce3f8, type: 2}
-  - {fileID: 11400000, guid: dd96dca9a9b60b242ae7b211e8abaf2f, type: 2}
-  - {fileID: 11400000, guid: 7b6b15bcb1d9b674a909f82816cf8fc0, type: 2}
-  - {fileID: 11400000, guid: 7f6921311e624c34384f1ce3ceae081d, type: 2}
-  minigameName: MiniGameScene
+  - {fileID: 11400000, guid: a6d9ba7fee680a048a8a17b1e114dd91, type: 2}
+  minigameName: 
   maxMinigameScore: 20
