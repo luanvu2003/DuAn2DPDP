@@ -30,11 +30,18 @@ public class TrashBinPortal : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext ctx)
     {
-        if (playerInRange)
-        {
-            SceneManager.LoadScene("MiniGameScene");
-        }
+        if (!playerInRange) return;
+
+        if (!QuestData.HasActiveQuest || QuestData.IsQuestCompleted)
+            return;
+
+        // Chỉ đúng object có tag nhiệm vụ
+        if (!CompareTag(QuestData.TargetTag))
+            return;
+
+        SceneManager.LoadScene(QuestData.QuestScene);
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {

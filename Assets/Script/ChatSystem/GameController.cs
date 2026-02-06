@@ -173,16 +173,21 @@ public class GameController : MonoBehaviour
         {
             StoryData.CurrentTurnIndex++;
 
-            if (choiceIndex == 1) // chỉ khi chọn B
-            {
-                StartCoroutine(EndChapterAndStartMinigame(selectedOption.minigameBonusTime));
-            }
-            else
-            {
-                Debug.Log("Option A ở lượt cuối: không tạo nhiệm vụ.");
-                // Có thể kết thúc chương hoặc chuyển sang logic khác
-            }
+            // OPTION A → không làm gì
+            if (choiceIndex == 0)
+                return;
+
+            // OPTION B → nhận nhiệm vụ
+            QuestData.HasActiveQuest = true;
+            QuestData.IsQuestCompleted = false;
+            QuestData.ShouldShowQuestUI = true;
+
+            QuestData.QuestText = selectedOption.questText;
+            QuestData.TargetTag = selectedOption.targetTag;
+            QuestData.QuestScene = selectedOption.questScene;
+            QuestData.OriginScene = selectedOption.originScene;
         }
+
         else
         {
             NextTurn();

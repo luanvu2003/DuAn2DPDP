@@ -6,11 +6,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider2D))]
 public class PotInteraction : MonoBehaviour
 {
-    public string miniGameSceneName = "MiniGameScene2";
-    public Text interactText; // Kéo thả Text UI từ Canvas vào đây
+    public Text interactText;
 
-    private bool playerInRange = false;
-    private PlayerControlsHoa controls; // class sinh ra từ Input Actions
+    private bool playerInRange;
+    private PlayerControlsHoa controls;
 
     void Awake()
     {
@@ -29,37 +28,30 @@ public class PotInteraction : MonoBehaviour
         controls.Gameplay.Disable();
     }
 
-    private void OnInteract(InputAction.CallbackContext ctx)
+    void OnInteract(InputAction.CallbackContext ctx)
     {
-        if (playerInRange)
-        {
-            Debug.Log("Đã nhấn F để chơi");
-            SceneManager.LoadScene(miniGameSceneName);
-        }
+        if (!playerInRange) return;
+        if (!QuestData.HasActiveQuest) return;
+
+        SceneManager.LoadScene(QuestData.QuestScene);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
-            if (interactText != null)
-            {
-                interactText.text = "Nhấn F để trồng cây";
-                interactText.gameObject.SetActive(true);
-            }
-        }
+        if (!other.CompareTag("Player")) return;
+
+        if (!QuestData.HasActiveQuest) return;
+
+        playerInRange = true;
+        interactText.text = "Nhấn F để làm nhiệm vụ";
+        interactText.gameObject.SetActive(true);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = false;
-            if (interactText != null)
-            {
-                interactText.gameObject.SetActive(false);
-            }
-        }
+        if (!other.CompareTag("Player")) return;
+
+        playerInRange = false;
+        interactText.gameObject.SetActive(false);
     }
 }
