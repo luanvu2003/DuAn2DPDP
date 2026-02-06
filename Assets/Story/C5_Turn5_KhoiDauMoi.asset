@@ -21,6 +21,10 @@ MonoBehaviour:
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "T\u1EAFt ngu\u1ED3n: M\xE0n h\xECnh v\u1EE5t t\u1EAFt. \"S\u1ED1ng
       th\u1EADt th\xF4i.\" "
@@ -29,4 +33,8 @@ MonoBehaviour:
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 0
+    questText: "Tr\u1ED3ng c\xE2y"
+    targetTag: TrongCay
+    questScene: MiniGameScene2
+    originScene: Home
   isFinalTurn: 1

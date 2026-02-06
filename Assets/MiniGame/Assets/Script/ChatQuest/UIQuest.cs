@@ -4,12 +4,23 @@ using UnityEngine.SceneManagement;
 
 public class UIQuest : MonoBehaviour
 {
+    public static UIQuest Instance;
 
     private TextMeshProUGUI questText;
 
     void Awake()
     {
+        // Singleton
+        if (Instance == null)
+            Instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         FindQuestText();
+        Refresh(); // 🔥 refresh ngay khi scene load
     }
 
     void OnEnable()
@@ -31,7 +42,11 @@ public class UIQuest : MonoBehaviour
     void FindQuestText()
     {
         GameObject textObj = GameObject.Find("QuestText");
-        if (textObj == null) return;
+        if (textObj == null)
+        {
+            questText = null;
+            return;
+        }
 
         questText = textObj.GetComponent<TextMeshProUGUI>();
     }
@@ -40,8 +55,8 @@ public class UIQuest : MonoBehaviour
     {
         if (questText == null) return;
 
-        // ❌ Không được hiện nếu chưa tới turn 5
-        if (!QuestData.ShouldShowQuestUI || !QuestData.HasActiveQuest)
+        // ❌ Chưa được phép hiện quest
+        if (!QuestData.HasActiveQuest || !QuestData.ShouldShowQuestUI)
         {
             questText.gameObject.SetActive(false);
             return;
@@ -51,12 +66,15 @@ public class UIQuest : MonoBehaviour
 
         if (QuestData.IsQuestCompleted)
         {
-            questText.text = "✅ Hoàn thành nhiệm vụ:\n" + QuestData.QuestText;
+            questText.text =
+                "✅ Hoàn thành nhiệm vụ:\n" +
+                QuestData.QuestText;
         }
         else
         {
-            questText.text = "🎯 Nhiệm vụ:\n" + QuestData.QuestText;
+            questText.text =
+                "🎯 Nhiệm vụ:\n" +
+                QuestData.QuestText;
         }
     }
-
 }
