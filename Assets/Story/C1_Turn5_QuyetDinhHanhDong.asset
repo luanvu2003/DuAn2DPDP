@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c47e5041f74e40479c64c82ca2514e8, type: 3}
   m_Name: C1_Turn5_QuyetDinhHanhDong
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTurn
-  conversation: []
+  speakerName: 
+  npcDialogue: 
   internalThought: "M\xF9i h\xF4i t\u1EEB \u0111\u1ED1ng r\xE1c n\xE0y l\xE0m m\xECnh
     ng\u1EA1t th\u1EDF. M\xECnh ph\u1EA3i l\xE0m g\xEC \u0111\xF3..."
   optionA:
@@ -20,20 +21,12 @@ MonoBehaviour:
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 1
-    questText: 
-    targetTag: 
-    questScene: 
-    originScene: 
+    showBubble: 0
   optionB:
     optionText: "\u0110\u1EE9ng d\u1EADy ngay! D\u1ECDn s\u1EA1ch c\xE1i chu\u1ED3ng
       l\u1EE3n n\xE0y!"
     responseText: 
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 1
-    questText: "D\u1ECDn r\xE1c"
-    targetTag: DonRac
-    questScene: MiniGameScene
-    originScene: BedRoom
+    showBubble: 0
   isFinalTurn: 1

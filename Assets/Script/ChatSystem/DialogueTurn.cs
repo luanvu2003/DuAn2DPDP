@@ -1,14 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Turn", menuName = "TwoWorlds/DialogueTurn")]
 public class DialogueTurn : ScriptableObject
 {
-    [Header("--- HỘI THOẠI GROUP CHAT (MỚI) ---")]
-    public List<NPCMessage> conversation;
+    [Header("--- THÔNG TIN NPC ---")]
+    public string speakerName;
+    [TextArea(3, 5)] public string npcDialogue; // Tin nhắn của Hùng/Lan/Ẩn danh
 
     [Header("--- SUY NGHĨ CỦA NAM (MỚI) ---")]
-    [TextArea(2, 4)] public string internalThought;
+    [TextArea(2, 4)] public string internalThought; // "Nam (Nghĩ): Lại là nó..."
 
     [Header("--- LỰA CHỌN A ---")]
     public OptionData optionA;
@@ -17,34 +17,18 @@ public class DialogueTurn : ScriptableObject
     public OptionData optionB;
 
     [Header("--- CẤU HÌNH ĐẶC BIỆT ---")]
-    public bool isFinalTurn = false; // Đánh dấu lượt cuối
-}
-
-[System.Serializable]
-public class NPCMessage
-{
-    public string speakerName;
-    [TextArea(2, 5)] public string content;
-
-    [Tooltip("Tích vào để hiện bong bóng. Bỏ tích để làm lời dẫn/hành động.")]
-    public bool showBubble = true;
-
-    public float delayDuration = 1.0f;
+    public bool isFinalTurn = false; // Đánh dấu đây là lượt cuối (Lượt 5) để chuyển game
 }
 
 [System.Serializable]
 public class OptionData
 {
-    public string optionText;
-    public string responseText;
-    public int scoreImpact;
+    public string optionText;   // Chữ hiện trên nút
+    public string responseText; // Tin nhắn sẽ gửi đi (Nếu để trống = Im lặng/Hành động)
+    public int scoreImpact;     // Điểm cộng/trừ
 
+    // Thêm biến này để quy định thời gian cho Minigame (Dùng cho lượt 5)
     public float minigameBonusTime = 0;
-    public bool showBubble = true;
-
-    [Header("--- NHIỆM VỤ (Chỉ dùng cho Option B khi isFinalTurn) ---")]
-    public string questText;     // Nội dung nhiệm vụ
-    public string targetTag;     // Tag của GameObject mà Player phải đến
-    public string questScene;    // Scene nhiệm vụ
-    public string originScene;   // Scene gốc để quay lại
+    [Tooltip("Tích vào để hiện bong bóng chat. Bỏ tích nếu đây là hành động/suy nghĩ.")]
+    public bool showBubble = true;  // <--- THÊM DÒNG NÀY (Mặc định là True)
 }

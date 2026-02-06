@@ -1,18 +1,19 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
+
 public class IntroCutscene : MonoBehaviour
 {
     [Header("--- CẤU HÌNH TEST ---")]
     public bool isTesting = true;
 
     [Header("--- CAMERA & MAP (QUAN TRỌNG) ---")]
-    public Camera mainCam;                
-    public Collider2D mapBounds;          
-    public float smoothTime = 0.2f;       
+    public Camera mainCam;                // Kéo Main Camera vào
+    public Collider2D mapBounds;          // Kéo cái MapArea (PolygonCollider2D) vào
+    public float smoothTime = 0.2f;       // Độ mượt khi camera chạy theo (0.1 = nhanh, 0.5 = chậm)
+
     [Header("--- ZOOM SETTING ---")]
-    public float zoomSize = 2.5f;         
-    public float normalSize = 5f;         
+    public float zoomSize = 2.5f;         // Zoom cận cảnh
+    public float normalSize = 5f;         // Zoom bình thường
     public float zoomSpeed = 2f;
 
     [Header("--- DIỄN VIÊN & ĐẠO CỤ ---")]
@@ -145,15 +146,8 @@ public class IntroCutscene : MonoBehaviour
         // Mở khóa điều khiển cho người chơi
         if (playerMovementScript) playerMovementScript.enabled = true;
         
-        // --- QUAN TRỌNG: GỌI GAMEMANAGER ĐỂ HIỆN UI ---
-        if (UIThongSo.Instance != null)
-        {
-            UIThongSo.Instance.StartDay(); // Hàm này sẽ bật HUD_Panel lên
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ Không tìm thấy GameManager! Hãy chắc chắn bạn đã tạo GameObject chứa script GameManager.");
-        }
+        // Kích hoạt cốt truyện nếu có
+        // if (GameController.Instance != null) GameController.Instance.StartChapter();
     }
 
     // Hàm Zoom thủ công cho Main Camera

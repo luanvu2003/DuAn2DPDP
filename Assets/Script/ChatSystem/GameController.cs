@@ -39,6 +39,14 @@ public class GameController : MonoBehaviour
         // Singleton pattern
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        // --- THÊM ĐOẠN NÀY ĐỂ TEST ---
+        // Mỗi lần bấm Play là reset về Ngày 0, Lượt 0 để test cho dễ
+        // Sau này làm xong tính năng Save/Load thì xóa 2 dòng này đi
+        StoryData.CurrentChapterIndex = 0;
+        StoryData.CurrentTurnIndex = 0;
+        StoryData.TotalScore = 0;
+        // -----------------------------
     }
 
     // Hàm này được gọi từ OpenPhone.cs
@@ -46,63 +54,39 @@ public class GameController : MonoBehaviour
     {
         int chapterIdx = StoryData.CurrentChapterIndex;
 
-        // Kiểm tra xem có còn chapter nào không
-        if (chapterIdx >= allChapters.Count) return;
-
-        ChapterData currentChapter = allChapters[chapterIdx];
-        int turnIdx = StoryData.CurrentTurnIndex;
-
-        // KIỂM TRA: Nếu đã chat hết lượt của chương này rồi
-        if (turnIdx >= currentChapter.chatSequence.Count)
+        // KIỂM TRA HẾT GAME
+        if (chapterIdx >= allChapters.Count)
         {
-            Debug.Log("Đã hết tin nhắn hôm nay rồi!");
-            // Bạn có thể hiện một dòng text "Không có tin nhắn mới" ở đây nếu muốn
-            return; // Dừng lại, không load gì cả
+            Debug.Log("🎉 CHÚC MỪNG! BẠN ĐÃ PHÁ ĐẢO GAME!");
+            // Gọi UI End Game hoặc Credit tại đây
+            return; // Dừng lại, không load chat nữa
         }
 
-        // Nếu chưa hết thì load bình thường
-        LoadTurn(currentChapter.chatSequence[turnIdx]);
+        // Nếu chưa hết game thì load bình thường
+        int turnIdx = StoryData.CurrentTurnIndex;
+        LoadTurn(allChapters[chapterIdx].chatSequence[turnIdx]);
     }
 
     // Tải nội dung của lượt chat hiện tại
-    // Thay đổi hàm LoadTurn thành Coroutine để xử lý việc chờ đợi
     void LoadTurn(DialogueTurn turn)
     {
-        // Gọi Coroutine chạy tuần tự
-        StartCoroutine(PlayTurnSequence(turn));
-    }
+        // --- SỬA ĐOẠN NÀY ---
+        // Chỉ sinh bong bóng NPC nếu có nội dung thoại
+        if (!string.IsNullOrEmpty(turn.npcDialogue))
+        {
+            SpawnBubble(npcBubblePrefab, turn.npcDialogue, turn.speakerName);
+        }
+        // --------------------
 
-    IEnumerator PlayTurnSequence(DialogueTurn turn)
-    {
-        // 1. Ẩn nút và suy nghĩ
+        // 2. Ẩn nút chọn và khung suy nghĩ
         choicePanel.SetActive(false);
         if (thoughtPanel != null) thoughtPanel.SetActive(false);
 
-        // 2. CHẠY LIST TIN NHẮN
-        foreach (NPCMessage msg in turn.conversation)
-        {
-            // LOGIC MỚI: Phải thỏa mãn 2 điều kiện:
-            // - Có nội dung (content không rỗng)
-            // - Dấu tích showBubble được BẬT
-            if (!string.IsNullOrEmpty(msg.content) && msg.showBubble)
-            {
-                SpawnBubble(npcBubblePrefab, msg.content, msg.speakerName);
-                StartCoroutine(ScrollToBottom());
-            }
-            else
-            {
-                // Nếu bỏ tích -> Không hiện bong bóng
-                // Nhưng vẫn có thể Log ra để biết game đang chạy ngầm
-                Debug.Log($"[ẨN] {msg.speakerName}: {msg.content}");
-            }
+        // 3. Chạy hiệu ứng suy nghĩ -> Rồi mới hiện nút
+        StartCoroutine(RunThoughtSequence(turn));
 
-            // Dù có hiện bong bóng hay không thì VẪN PHẢI CHỜ (Delay)
-            // Để tạo nhịp độ cho game (ví dụ chờ 2s cho người chơi đọc dòng dẫn chuyện)
-            yield return new WaitForSeconds(msg.delayDuration);
-        }
-
-        // 3. Hiện Suy Nghĩ
-        yield return StartCoroutine(RunThoughtSequence(turn));
+        // 4. Cuộn xuống
+        StartCoroutine(ScrollToBottom());
     }
     IEnumerator RunThoughtSequence(DialogueTurn turn)
     {
@@ -157,64 +141,54 @@ public class GameController : MonoBehaviour
 
     void OnOptionSelected(DialogueTurn turn, int choiceIndex)
     {
+        // Lấy dữ liệu của lựa chọn vừa bấm (A hoặc B)
         OptionData selectedOption = (choiceIndex == 0) ? turn.optionA : turn.optionB;
 
+        // 1. CỘNG ĐIỂM
         StoryData.TotalScore += selectedOption.scoreImpact;
 
-        if (selectedOption.showBubble && !string.IsNullOrEmpty(selectedOption.responseText))
+        // 2. XỬ LÝ HIỆN TIN NHẮN (Dựa trên dấu tích showBubble)
+        // Nếu dấu tích ĐƯỢC BẬT -> Hiện bong bóng
+        if (selectedOption.showBubble)
         {
-            SpawnBubble(playerBubblePrefab, selectedOption.responseText, "Me");
+            // Kiểm tra thêm cho chắc: Phải có chữ mới hiện
+            if (!string.IsNullOrEmpty(selectedOption.responseText))
+            {
+                SpawnBubble(playerBubblePrefab, selectedOption.responseText, "Me");
+            }
+        }
+        else
+        {
+            // Nếu dấu tích BỊ TẮT -> Không làm gì cả (Im lặng/Hành động)
+            Debug.Log("Người chơi chọn hành động ẩn (Không hiện chat).");
         }
 
+        // 3. TẮT UI & CHUYỂN TIẾP
         choicePanel.SetActive(false);
         if (thoughtPanel != null) thoughtPanel.SetActive(false);
 
         if (turn.isFinalTurn)
         {
-            StoryData.CurrentTurnIndex++;
-
-            // OPTION A → không làm gì
-            if (choiceIndex == 0)
-                return;
-
-            // OPTION B → nhận nhiệm vụ
-            QuestData.HasActiveQuest = true;
-            QuestData.IsQuestCompleted = false;
-            QuestData.ShouldShowQuestUI = true;
-
-            QuestData.QuestText = selectedOption.questText;
-            QuestData.TargetTag = selectedOption.targetTag;
-            QuestData.QuestScene = selectedOption.questScene;
-            QuestData.OriginScene = selectedOption.originScene;
+            StartCoroutine(EndChapterAndStartMinigame(selectedOption.minigameBonusTime));
         }
-
         else
         {
             NextTurn();
         }
     }
 
-
     IEnumerator EndChapterAndStartMinigame(float bonusTime)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); // Đợi 1 xíu cho mượt
 
-        Debug.Log("🚀 CHUYỂN SANG NHIỆM VỤ! Bonus Time: " + bonusTime);
+        Debug.Log("🚀 CHUYỂN SANG DỌN RÁC! Bonus Time: " + bonusTime);
 
-        DialogueTurn currentTurn = allChapters[StoryData.CurrentChapterIndex].chatSequence[StoryData.CurrentTurnIndex - 1];
-        QuestManager questManager = FindObjectOfType<QuestManager>();
-        if (questManager != null)
-        {
-            questManager.StartQuest(
-                currentTurn.optionB.questText,
-                currentTurn.optionB.targetTag,
-                currentTurn.optionB.questScene,
-                currentTurn.optionB.originScene
-            );
-        }
+        // Lưu thời gian bonus vào StoryData để Minigame đọc được
+        // StoryData.BonusTime = bonusTime; 
+
+        // Load Scene Minigame (Ví dụ tên scene là "MiniGame_DonRac")
+        // UnityEngine.SceneManagement.SceneManager.LoadScene("MiniGame_DonRac");
     }
-
-
 
     void NextTurn()
     {
@@ -282,25 +256,5 @@ public class GameController : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         chatScrollRect.verticalNormalizedPosition = 0f; // 0 = Dưới cùng
         chatScrollRect.velocity = Vector2.zero;
-    }
-    private void Update()
-    {
-        // --- CHEAT CODE: NHẤN R ĐỂ RESET GAME ---
-        // Chỉ dùng khi test, sau này build game nhớ xóa hoặc ẩn đi
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            // 1. Reset dữ liệu trong RAM về 0
-            StoryData.CurrentChapterIndex = 0;
-            StoryData.CurrentTurnIndex = 0;
-            StoryData.TotalScore = 0;
-
-            // 2. Xóa dữ liệu trong ổ cứng (nếu bạn có dùng PlayerPrefs)
-            PlayerPrefs.DeleteAll();
-
-            // 3. Load lại màn chơi hiện tại
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-
-            Debug.Log("🔄 ĐÃ RESET GAME VỀ TỪ ĐẦU (NGÀY 0 - TURN 0)!");
-        }
     }
 }
