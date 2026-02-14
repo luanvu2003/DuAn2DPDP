@@ -21,7 +21,11 @@ MonoBehaviour:
     responseText: "M\xE0y b\u1ECB \u0111i\xEAn \xE0 con ch\xF3 ngu n\xE0y! C\xFAt!"
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "Th\xF4i n\xE0o M\u1EF1c, tao \u0111ang b\u1EF1c, \u0111\u1EEBng
       ph\xE1."
@@ -29,5 +33,9 @@ MonoBehaviour:
       ph\xE1."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

@@ -21,7 +21,11 @@ MonoBehaviour:
       \u0110i nhanh r\u1ED3i v\u1EC1 tao c\xF2n ch\u1EEDi nhau ti\u1EBFp."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "\u0110i d\u1EA1o c\xF4ng vi\xEAn nh\xE9? Tao s\u1EBD kh\xF4ng c\u1EA7m
       \u0111i\u1EC7n tho\u1EA1i n\u1EEFa."
@@ -29,5 +33,9 @@ MonoBehaviour:
       c\u1EA7m \u0111i\u1EC7n tho\u1EA1i n\u1EEFa."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: "D\u1EAFt ch\xF3 \u0111i d\u1EA1o"
+    targetTag: DatCho
+    questScene: MiniGameScene3
+    originScene: BedRoom
   isFinalTurn: 1
