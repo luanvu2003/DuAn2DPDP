@@ -25,11 +25,19 @@ MonoBehaviour:
     responseText: "T\u1EA1i m\xE0y \u0111\u1EA5y!"
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "Kh\xF4ng ph\u1EA3i l\u1ED7i c\u1EE7a m\xE0y..."
     responseText: "Kh\xF4ng ph\u1EA3i l\u1ED7i c\u1EE7a m\xE0y..."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

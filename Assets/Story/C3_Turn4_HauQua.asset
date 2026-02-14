@@ -23,11 +23,19 @@ MonoBehaviour:
       tao b\xE1n v\xE0o qu\xE1n c\u1EA7y t\u01A1."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "M\u1EF1c \u01A1i... Tao xin l\u1ED7i. Tao n\xF3ng qu\xE1..."
     responseText: "M\u1EF1c \u01A1i... Tao xin l\u1ED7i. Tao n\xF3ng qu\xE1..."
     scoreImpact: 0
     minigameBonusTime: 0
-    showBubble: 0
+    showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0
