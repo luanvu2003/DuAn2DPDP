@@ -186,6 +186,8 @@ public class GameController : MonoBehaviour
             QuestData.TargetTag = selectedOption.targetTag;
             QuestData.QuestScene = selectedOption.questScene;
             QuestData.OriginScene = selectedOption.originScene;
+
+            UIQuest.Instance?.Refresh();
         }
 
         else
