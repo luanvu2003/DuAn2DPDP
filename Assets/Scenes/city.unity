@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
   allChapters:
-  - {fileID: 11400000, guid: f4784d74572593b41bc7fcf9f8b080a0, type: 2}
+  - {fileID: 11400000, guid: 75c9e44d22eb7c94b941360b66453448, type: 2}
   chatScrollRect: {fileID: 468151676}
   chatContent: {fileID: 671262378}
   choicePanel: {fileID: 1225769817}
@@ -76446,11 +76446,11 @@ PrefabInstance:
       objectReference: {fileID: 958917822}
     - target: {fileID: 5596527218466081415, guid: e8d3775c853af9544913a9c56744347b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.11
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5596527218466081415, guid: e8d3775c853af9544913a9c56744347b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.92
+      value: -7.43
       objectReference: {fileID: 0}
     - target: {fileID: 5596527218466081415, guid: e8d3775c853af9544913a9c56744347b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76483,6 +76483,22 @@ PrefabInstance:
     - target: {fileID: 5596527218466081415, guid: e8d3775c853af9544913a9c56744347b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595168734667646944, guid: e8d3775c853af9544913a9c56744347b, type: 3}
+      propertyPath: m_Size.x
+      value: 12.661703
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595168734667646944, guid: e8d3775c853af9544913a9c56744347b, type: 3}
+      propertyPath: m_Size.y
+      value: 5.0523334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595168734667646944, guid: e8d3775c853af9544913a9c56744347b, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.629674
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595168734667646944, guid: e8d3775c853af9544913a9c56744347b, type: 3}
+      propertyPath: m_Offset.y
+      value: -2.5800045
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

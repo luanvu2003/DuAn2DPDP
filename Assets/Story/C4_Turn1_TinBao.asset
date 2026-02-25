@@ -24,8 +24,7 @@ MonoBehaviour:
       lu\xF4n!"
     showBubble: 1
     delayDuration: 0
-  internalThought: "M\xECnh \u0111ang \u1EDF ngay \u0111\xE2y... \u0110\xF4ng ng\u01B0\u1EDDi
-    x\xFAm l\u1EA1i qu\xE1."
+  internalThought: "kh\xF4ng bi\u1EBFt c\xF3 chuy\u1EC7n g\xEC nh\u1EC9"
   optionA:
     optionText: "\u0110ang ch\u1EA1y ra \u0111\xE2y! \u0110\u1EC3 tao m\u1EDF m\xE1y
       quay, k\xE8o n\xE0y l\xEAn xu h\u01B0\u1EDBng l\xE0 c\xE1i ch\u1EAFc"
@@ -34,12 +33,21 @@ MonoBehaviour:
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "Tao th\u1EA5y r\u1ED3i. Nh\xECn nghi\xEAm tr\u1ECDng l\u1EAFm, kh\xF4ng
-      bi\u1EBFt ng\u01B0\u1EDDi c\xF3 sao kh\xF4ng..."
+      bi\u1EBFt ng\u01B0\u1EDDi c\xF3 sao kh\xF4ng... \u0111\u1EC3 t ra xem sao"
     responseText: "Tao th\u1EA5y r\u1ED3i. Nh\xECn nghi\xEAm tr\u1ECDng l\u1EAFm,
-      kh\xF4ng bi\u1EBFt ng\u01B0\u1EDDi c\xF3 sao kh\xF4ng..."
+      kh\xF4ng bi\u1EBFt ng\u01B0\u1EDDi c\xF3 sao kh\xF4ng... \u0111\u1EC3 t ra
+      xem sao"
     scoreImpact: 0
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0
