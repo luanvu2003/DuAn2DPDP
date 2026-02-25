@@ -15,7 +15,7 @@ public class DialogueTurn : ScriptableObject
 
     [Header("--- LỰA CHỌN B ---")]
     public OptionData optionB;
-
+    
     [Header("--- CẤU HÌNH ĐẶC BIỆT ---")]
     public bool isFinalTurn = false; // Đánh dấu lượt cuối
 }

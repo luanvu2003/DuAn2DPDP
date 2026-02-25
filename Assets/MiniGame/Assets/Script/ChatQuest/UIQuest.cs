@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class UIQuest : MonoBehaviour
 {
     public static UIQuest Instance;
 
     private TextMeshProUGUI questText;
+    public List<string> hideInScenes = new List<string>();
 
     void Awake()
     {
@@ -55,8 +57,16 @@ public class UIQuest : MonoBehaviour
     {
         if (questText == null) return;
 
-        // ❌ Chưa được phép hiện quest
-        if (!QuestData.HasActiveQuest || !QuestData.ShouldShowQuestUI)
+        // Không có quest → ẩn
+        if (!QuestData.HasActiveQuest)
+        {
+            questText.gameObject.SetActive(false);
+            return;
+        }
+
+        // 🔥 Kiểm tra scene có bị ẩn không
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (hideInScenes.Contains(currentScene))
         {
             questText.gameObject.SetActive(false);
             return;
