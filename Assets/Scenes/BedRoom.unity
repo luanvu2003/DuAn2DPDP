@@ -3530,7 +3530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f3f5d6f244f4441950154320a3a415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroCutscene
-  isTesting: 1
+  isTesting: 0
   mainCam: {fileID: 539356361}
   mapBounds: {fileID: 2006917881}
   smoothTime: 0.2

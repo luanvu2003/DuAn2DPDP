@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51fa7a4edd6f5b2419316b4941f71be4, type: 3}
-  m_Name: Chapter4_CT
+  m_Name: "Chapter4_ch\u01B0ng2"
   m_EditorClassIdentifier: Assembly-CSharp::ChapterData
   chapterName: 
   chatSequence:
