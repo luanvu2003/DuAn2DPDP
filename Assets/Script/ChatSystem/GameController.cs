@@ -210,6 +210,8 @@ public class GameController : MonoBehaviour
             QuestData.TargetTag = selectedOption.targetTag;
             QuestData.QuestScene = selectedOption.questScene;
             QuestData.OriginScene = selectedOption.originScene;
+
+            UIQuest.Instance?.Refresh();
         }
         // 5. NẾU KHÔNG PHẢI LƯỢT CUỐI -> CHUYỂN TIẾP (QUAN TRỌNG)
         else
