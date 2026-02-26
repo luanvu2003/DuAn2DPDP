@@ -25,15 +25,23 @@ MonoBehaviour:
       thua l\xE0m gi\u1EB7c."
     responseText: "Hay l\xE0 th\u1EED li\u1EC1u m\u1ED9t phen? Th\u1EAFng l\xE0m
       vua, thua l\xE0m gi\u1EB7c."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "B\xE1nh v\u1EBD th\xF4i. Ngon th\u1EBF th\xEC n\xF3 r\u1EE7 h\u1ECD
       h\xE0ng n\xF3 l\xE0m r\u1ED3i."
     responseText: "B\xE1nh v\u1EBD th\xF4i. Ngon th\u1EBF th\xEC n\xF3 r\u1EE7 h\u1ECD
       h\xE0ng n\xF3 l\xE0m r\u1ED3i."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

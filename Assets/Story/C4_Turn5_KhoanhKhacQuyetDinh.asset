@@ -28,14 +28,22 @@ MonoBehaviour:
   optionA:
     optionText: "Ch\u1EBFt r\u1ED3i... Tao kh\xF4ng d\xE1m nh\xECn..."
     responseText: "Ch\u1EBFt r\u1ED3i... Tao kh\xF4ng d\xE1m nh\xECn..."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "Tao v\u1EE9t m\xE1y \u0111\xE2y! TAO PH\u1EA2I C\u1EE8U B\xC0 \u1EA4Y!"
     responseText: "Tao v\u1EE9t m\xE1y \u0111\xE2y! TAO PH\u1EA2I C\u1EE8U B\xC0
       \u1EA4Y!"
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 1

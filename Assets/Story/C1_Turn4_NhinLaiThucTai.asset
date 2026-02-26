@@ -24,9 +24,9 @@ MonoBehaviour:
       kh\xF4ng c\xF3 b\u1EC7 \u0111\u1EE1."
     responseText: "T\u1EA1i x\xE3 h\u1ED9i b\u1EA5t c\xF4ng th\xF4i. T\u1EA1i m\xECnh
       kh\xF4ng c\xF3 b\u1EC7 \u0111\u1EE1."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 
@@ -36,9 +36,9 @@ MonoBehaviour:
       ph\u1EA3n \xE1nh ch\xEDnh con ng\u01B0\u1EDDi m\xECnh."
     responseText: "L\xE0 do m\xECnh l\u01B0\u1EDDi bi\u1EBFng. C\u0103n ph\xF2ng
       n\xE0y ph\u1EA3n \xE1nh ch\xEDnh con ng\u01B0\u1EDDi m\xECnh."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 

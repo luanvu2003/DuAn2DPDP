@@ -26,15 +26,23 @@ MonoBehaviour:
       k\u0129 m\u1EDBi n\xE9t."
     responseText: "Ok \u0111\u1EE3i t\xED, tao \u0111ang len v\xE0o. Ph\u1EA3i zoom
       k\u0129 m\u1EDBi n\xE9t."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "B\u1ECDn \u1EDF \u0111\xE2y \u0111i\xEAn h\u1EBFt r\u1ED3i. Kh\xF4ng
       ai c\u1EE9u ng\u01B0\u1EDDi c\u1EA3, to\xE0n \u0111\u1EE9ng quay phim th\xF4i."
     responseText: "B\u1ECDn \u1EDF \u0111\xE2y \u0111i\xEAn h\u1EBFt r\u1ED3i. Kh\xF4ng
       ai c\u1EE9u ng\u01B0\u1EDDi c\u1EA3, to\xE0n \u0111\u1EE9ng quay phim th\xF4i."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

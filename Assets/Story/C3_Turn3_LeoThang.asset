@@ -23,9 +23,9 @@ MonoBehaviour:
   optionA:
     optionText: "T\u1EA1i m\xE0y \u0111\u1EA5y!"
     responseText: "T\u1EA1i m\xE0y \u0111\u1EA5y!"
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 
@@ -33,9 +33,9 @@ MonoBehaviour:
   optionB:
     optionText: "Kh\xF4ng ph\u1EA3i l\u1ED7i c\u1EE7a m\xE0y..."
     responseText: "Kh\xF4ng ph\u1EA3i l\u1ED7i c\u1EE7a m\xE0y..."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 

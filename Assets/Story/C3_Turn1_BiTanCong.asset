@@ -24,15 +24,23 @@ MonoBehaviour:
       m\xE0y tao xi\xEAn!"
     responseText: "M\xE0y bi\u1EBFt b\u1ED1 m\xE0y l\xE0 ai kh\xF4ng? Tao t\xECm
       ra m\xE0y tao xi\xEAn!"
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "L\u1EA1i m\u1EA5y \u0111\u1EE9a tr\u1EBB tr\xE2u anh h\xF9ng b\xE0n
       ph\xEDm."
     responseText: "L\u1EA1i m\u1EA5y \u0111\u1EE9a tr\u1EBB tr\xE2u anh h\xF9ng b\xE0n
       ph\xEDm."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

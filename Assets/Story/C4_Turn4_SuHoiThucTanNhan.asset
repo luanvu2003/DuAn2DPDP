@@ -26,15 +26,23 @@ MonoBehaviour:
       d\xE2y v\xE0o l\u1EE1 c\xF4ng an b\u1EAFt th\xEC phi\u1EC1n."
     responseText: "Th\xF4i tao run tay qu\xE1... Tao \u0111\u1EE9ng xa live th\xF4i,
       d\xE2y v\xE0o l\u1EE1 c\xF4ng an b\u1EAFt th\xEC phi\u1EC1n."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "Tao kh\xF4ng quay n\u1EEFa. Tao l\xE0 con ng\u01B0\u1EDDi ch\u1EE9
       kh\xF4ng ph\u1EA3i c\xE1i m\xE1y quay!"
     responseText: "Tao kh\xF4ng quay n\u1EEFa. Tao l\xE0 con ng\u01B0\u1EDDi ch\u1EE9
       kh\xF4ng ph\u1EA3i c\xE1i m\xE1y quay!"
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

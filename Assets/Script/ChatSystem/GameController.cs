@@ -1,23 +1,24 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Đừng quên import cái này để load Scene Ending
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
     [Header("--- DỮ LIỆU GAME ---")]
     public List<ChapterData> allChapters; // Kéo các ChapterData vào đây
+
     // [SerializeField] private int currentChapterIndex = 0;
     private int currentTurnIndex = 0;
     private int totalScore = 0;
 
     [Header("--- UI CHAT ---")]
-    public ScrollRect chatScrollRect;       // Kéo Scroll View vào
-    public Transform chatContent;           // Kéo object Content trong Viewport vào
-    public GameObject choicePanel;          // Panel chứa 2 nút chọn
+    public ScrollRect chatScrollRect; // Kéo Scroll View vào
+    public Transform chatContent; // Kéo object Content trong Viewport vào
+    public GameObject choicePanel; // Panel chứa 2 nút chọn
 
     [Header("--- UI BUTTONS ---")]
     public Button btnOptionA;
@@ -26,19 +27,23 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI txtOptionB;
 
     [Header("--- PREFABS ---")]
-    public GameObject npcBubblePrefab;      // Prefab tin nhắn NPC (có tên ở trên)
-    public GameObject playerBubblePrefab;   // Prefab tin nhắn Player (không cần tên)
+    public GameObject npcBubblePrefab; // Prefab tin nhắn NPC (có tên ở trên)
+    public GameObject playerBubblePrefab; // Prefab tin nhắn Player (không cần tên)
 
     [Header("--- UI THOUGHT (MỚI) ---")]
-    public GameObject thoughtPanel;      // Kéo cái Panel chứa suy nghĩ vào
-    public TextMeshProUGUI thoughtText;  // Kéo cái Text hiển thị suy nghĩ vào
+    public GameObject thoughtPanel; // Kéo cái Panel chứa suy nghĩ vào
+    public TextMeshProUGUI thoughtText; // Kéo cái Text hiển thị suy nghĩ vào
+
     [Header("--- CẤU HÌNH ---")]
     public float typingSpeed = 0.05f; // Tốc độ chạy chữ (càng nhỏ càng nhanh)
+
     private void Awake()
     {
         // Singleton pattern
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
     // Hàm này được gọi từ OpenPhone.cs
@@ -47,7 +52,8 @@ public class GameController : MonoBehaviour
         int chapterIdx = StoryData.CurrentChapterIndex;
 
         // Kiểm tra xem có còn chapter nào không
-        if (chapterIdx >= allChapters.Count) return;
+        if (chapterIdx >= allChapters.Count)
+            return;
 
         ChapterData currentChapter = allChapters[chapterIdx];
         int turnIdx = StoryData.CurrentTurnIndex;
@@ -76,7 +82,8 @@ public class GameController : MonoBehaviour
     {
         // 1. Ẩn nút và suy nghĩ
         choicePanel.SetActive(false);
-        if (thoughtPanel != null) thoughtPanel.SetActive(false);
+        if (thoughtPanel != null)
+            thoughtPanel.SetActive(false);
 
         // 2. CHẠY LIST TIN NHẮN
         foreach (NPCMessage msg in turn.conversation)
@@ -104,6 +111,7 @@ public class GameController : MonoBehaviour
         // 3. Hiện Suy Nghĩ
         yield return StartCoroutine(RunThoughtSequence(turn));
     }
+
     IEnumerator RunThoughtSequence(DialogueTurn turn)
     {
         // Kiểm tra xem có suy nghĩ không
@@ -159,25 +167,41 @@ public class GameController : MonoBehaviour
     {
         OptionData selectedOption = (choiceIndex == 0) ? turn.optionA : turn.optionB;
 
+        // 1. CẬP NHẬT ĐIỂM SỐ (Chung)
         StoryData.TotalScore += selectedOption.scoreImpact;
 
+        // --- SỬA LẠI: ĐỒNG BỘ MOOD (Đưa lên đây để luôn chạy) ---
+        if (UIThongSo.Instance != null)
+        {
+            UIThongSo.Instance.AddMood(selectedOption.scoreImpact);
+            Debug.Log($"Đã cập nhật Mood: {selectedOption.scoreImpact} điểm");
+        }
+        // ---------------------------------------------------------
+
+        // 2. HIỂN THỊ BONG BÓNG CHAT (Nếu có)
         if (selectedOption.showBubble && !string.IsNullOrEmpty(selectedOption.responseText))
         {
             SpawnBubble(playerBubblePrefab, selectedOption.responseText, "Me");
         }
 
+        // 3. ẨN UI LỰA CHỌN
         choicePanel.SetActive(false);
-        if (thoughtPanel != null) thoughtPanel.SetActive(false);
+        if (thoughtPanel != null)
+            thoughtPanel.SetActive(false);
 
+        // 4. KIỂM TRA: NẾU LÀ LƯỢT CUỐI (FINAL TURN)
         if (turn.isFinalTurn)
         {
             StoryData.CurrentTurnIndex++;
 
-            // OPTION A → không làm gì
+            // Nếu chọn A: Kết thúc hội thoại, không làm gì thêm
             if (choiceIndex == 0)
+            {
+                // Có thể thêm hàm đóng hội thoại ở đây nếu cần, VD: EndDialogue();
                 return;
+            }
 
-            // OPTION B → nhận nhiệm vụ
+            // Nếu chọn B: Nhận nhiệm vụ
             QuestData.HasActiveQuest = true;
             QuestData.IsQuestCompleted = false;
             QuestData.ShouldShowQuestUI = true;
@@ -187,13 +211,12 @@ public class GameController : MonoBehaviour
             QuestData.QuestScene = selectedOption.questScene;
             QuestData.OriginScene = selectedOption.originScene;
         }
-
+        // 5. NẾU KHÔNG PHẢI LƯỢT CUỐI -> CHUYỂN TIẾP (QUAN TRỌNG)
         else
         {
             NextTurn();
         }
     }
-
 
     IEnumerator EndChapterAndStartMinigame(float bonusTime)
     {
@@ -201,7 +224,9 @@ public class GameController : MonoBehaviour
 
         Debug.Log("🚀 CHUYỂN SANG NHIỆM VỤ! Bonus Time: " + bonusTime);
 
-        DialogueTurn currentTurn = allChapters[StoryData.CurrentChapterIndex].chatSequence[StoryData.CurrentTurnIndex - 1];
+        DialogueTurn currentTurn = allChapters[StoryData.CurrentChapterIndex].chatSequence[
+            StoryData.CurrentTurnIndex - 1
+        ];
         QuestManager questManager = FindObjectOfType<QuestManager>();
         if (questManager != null)
         {
@@ -214,11 +239,8 @@ public class GameController : MonoBehaviour
         }
     }
 
-
-
     void NextTurn()
     {
-        // TĂNG LƯỢT TRONG SỔ TAY
         StoryData.CurrentTurnIndex++;
 
         int chapterIdx = StoryData.CurrentChapterIndex;
@@ -226,17 +248,65 @@ public class GameController : MonoBehaviour
 
         ChapterData currentChapter = allChapters[chapterIdx];
 
+        // Nếu vẫn còn tin nhắn trong chương -> Load tiếp
         if (turnIdx < currentChapter.chatSequence.Count)
         {
             StartCoroutine(WaitAndLoadNext(currentChapter.chatSequence[turnIdx]));
         }
         else
         {
-            Debug.Log("--- HẾT CHƯƠNG ---");
-            // Tăng Chapter lên để lần sau vào game là qua chương mới
-            StoryData.CurrentChapterIndex++;
-            StoryData.CurrentTurnIndex = 0; // Reset turn về 0 cho chương mới
+            Debug.Log("--- HẾT CHƯƠNG " + (chapterIdx + 1) + " ---");
+
+            // --- KIỂM TRA HẾT GAME ---
+            // Nếu đây là chương 5 (Index là 4 vì đếm từ 0, 1, 2, 3, 4)
+            // Hoặc đơn giản là kiểm tra xem còn chương nào phía sau không
+            if (chapterIdx >= 4) // Giả sử chương 5 là chương cuối
+            {
+                CalculateFinalEnding(); // Tính điểm kết thúc
+            }
+            else
+            {
+                // Chưa hết game -> Sang chương mới
+                StoryData.CurrentChapterIndex++;
+                StoryData.CurrentTurnIndex = 0;
+
+                // Load lại Scene để refresh UI cho ngày mới
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
+    }
+
+    void CalculateFinalEnding()
+    {
+        float finalMood = 0;
+        if (UIThongSo.Instance != null)
+        {
+            finalMood = UIThongSo.Instance.currentMood;
+        }
+
+        Debug.Log("🏁 TỔNG KẾT GAME! Mood cuối cùng: " + finalMood);
+
+        // Logic chia ending như bạn yêu cầu
+        if (finalMood < 26) // Dưới 25 (tức là từ 1 đến 25, vì 0 đã chết rồi)
+        {
+            StoryData.EndingID = 1; // Bad
+        }
+        else if (finalMood >= 26 && finalMood <= 50)
+        {
+            StoryData.EndingID = 2; // Normal
+        }
+        else if (finalMood >= 51 && finalMood <= 75)
+        {
+            StoryData.EndingID = 3; // Good
+        }
+        else // >= 76
+        {
+            StoryData.EndingID = 4; // Best
+        }
+
+        // Chuyển sang Scene Ending
+        // Thay "EndingScene" bằng tên thật scene của bạn
+        SceneManager.LoadScene("Ending");
     }
 
     IEnumerator WaitAndLoadNext(DialogueTurn turn)
@@ -250,8 +320,10 @@ public class GameController : MonoBehaviour
     {
         Debug.LogError("🔴 [BƯỚC 3] Code đã chạy tới SpawnBubble! Đang tạo Clone..."); // <--- Thêm dòng này
 
-        if (prefab == null) Debug.LogError("❌ LỖI: Prefab bị NULL!");
-        if (chatContent == null) Debug.LogError("❌ LỖI: ChatContent bị NULL!");
+        if (prefab == null)
+            Debug.LogError("❌ LỖI: Prefab bị NULL!");
+        if (chatContent == null)
+            Debug.LogError("❌ LỖI: ChatContent bị NULL!");
 
         GameObject bubble = Instantiate(prefab, chatContent);
 
@@ -262,7 +334,7 @@ public class GameController : MonoBehaviour
         if (texts.Length == 2) // Dành cho NPC (Có tên + Nội dung)
         {
             texts[0].text = senderName; // Cái text nằm trên
-            texts[1].text = message;    // Cái text nằm trong bong bóng
+            texts[1].text = message; // Cái text nằm trong bong bóng
         }
         else if (texts.Length == 1) // Dành cho Player (Chỉ có nội dung)
         {
@@ -283,6 +355,7 @@ public class GameController : MonoBehaviour
         chatScrollRect.verticalNormalizedPosition = 0f; // 0 = Dưới cùng
         chatScrollRect.velocity = Vector2.zero;
     }
+
     private void Update()
     {
         // --- CHEAT CODE: NHẤN R ĐỂ RESET GAME ---
@@ -298,7 +371,9 @@ public class GameController : MonoBehaviour
             PlayerPrefs.DeleteAll();
 
             // 3. Load lại màn chơi hiện tại
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            );
 
             Debug.Log("🔄 ĐÃ RESET GAME VỀ TỪ ĐẦU (NGÀY 0 - TURN 0)!");
         }

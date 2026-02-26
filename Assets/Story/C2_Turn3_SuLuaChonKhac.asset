@@ -23,13 +23,21 @@ MonoBehaviour:
   optionA:
     optionText: "Con b\u1EADn l\u1EAFm c\xF4 \u01A1i."
     responseText: "Con b\u1EADn l\u1EAFm c\xF4 \u01A1i."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "V\xE2ng, c\xF4 \u0111\u1EE3i con ch\xFAt con qua ngay."
     responseText: "V\xE2ng, c\xF4 \u0111\u1EE3i con ch\xFAt con qua ngay."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

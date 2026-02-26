@@ -22,15 +22,23 @@ MonoBehaviour:
     responseText: "\u0110\u1EA5t n\xE0y c\u1EB1n c\u1ED7i th\u1EBF, tr\u1ED3ng g\xEC
       s\u1ED1ng \u0111\u01B0\u1EE3c. Gi\u1ED1ng nh\u01B0 cu\u1ED9c \u0111\u1EDDi
       m\xECnh v\u1EADy."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "N\xF3 v\u1EABn c\u1ED1 n\u1EA3y m\u1EA7m k\xECa. N\u1EBFu \u0111\u01B0\u1EE3c
       ch\u0103m s\xF3c, n\xF3 s\u1EBD th\xE0nh c\xE2y l\u1EDBn."
     responseText: "N\xF3 v\u1EABn c\u1ED1 n\u1EA3y m\u1EA7m k\xECa. N\u1EBFu \u0111\u01B0\u1EE3c
       ch\u0103m s\xF3c, n\xF3 s\u1EBD th\xE0nh c\xE2y l\u1EDBn."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0
