@@ -1021,6 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32610ff1aea44b4489cd2129f934d628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIQuest
+  hideInScenes: []
 --- !u!114 &414780026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2916,7 +2917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1281930108}
   - component: {fileID: 1281930110}
-  - component: {fileID: 1281930109}
+  - component: {fileID: 1281930111}
   m_Layer: 0
   m_Name: GoToBedRoom
   m_TagString: Untagged
@@ -2939,18 +2940,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1138090828}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1281930109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281930107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f3fe6985d69f14383db60b7b767aea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoToBedRoom
 --- !u!61 &1281930110
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2997,6 +2986,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.5208521, y: 1.260426}
   m_EdgeRadius: 0
+--- !u!114 &1281930111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281930107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6d47cb69111ab48b66711844dc2e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTransfer
+  nextSceneName: BedRoom
+  requireEndOfDay: 0
 --- !u!1 &1297545685
 GameObject:
   m_ObjectHideFlags: 0

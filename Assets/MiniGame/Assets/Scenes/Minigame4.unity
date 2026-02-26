@@ -924,7 +924,7 @@ MonoBehaviour:
   hpFillImage: {fileID: 1423089760}
   youWinCanvas: {fileID: 427190905}
   winDelay: 2
-  nextSceneName: BedRoom
+  nextSceneName: city
   drainSpeed: 0.2
   addPerPress: 0.08
 --- !u!1 &743206870
