@@ -167,15 +167,30 @@ public class GameController : MonoBehaviour
     {
         OptionData selectedOption = (choiceIndex == 0) ? turn.optionA : turn.optionB;
 
-        // 1. CẬP NHẬT ĐIỂM SỐ (Chung)
+        // 1. CẬP NHẬT ĐIỂM SỐ (Chạy trước)
         StoryData.TotalScore += selectedOption.scoreImpact;
 
-        // --- SỬA LẠI: ĐỒNG BỘ MOOD (Đưa lên đây để luôn chạy) ---
         if (UIThongSo.Instance != null)
         {
             UIThongSo.Instance.AddMood(selectedOption.scoreImpact);
             Debug.Log($"Đã cập nhật Mood: {selectedOption.scoreImpact} điểm");
         }
+
+        // 2. ẨN UI
+        choicePanel.SetActive(false);
+        if (thoughtPanel != null)
+            thoughtPanel.SetActive(false);
+
+        // 3. CHUYỂN SCENE NẾU CÓ
+        if (!string.IsNullOrEmpty(selectedOption.nextSceneName))
+        {
+            Debug.Log("Đang chuyển scene sang: " + selectedOption.nextSceneName);
+            SceneManager.LoadScene(selectedOption.nextSceneName);
+            return;
+        }
+
+    // Phần còn lại giữ nguyên
+
         // ---------------------------------------------------------
 
         // 2. HIỂN THỊ BONG BÓNG CHAT (Nếu có)
