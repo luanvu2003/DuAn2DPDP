@@ -1,7 +1,8 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement; // Đừng quên import cái này để load Scene Ending
+using UnityEngine.UI;
+
 public class UIThongSo : MonoBehaviour
 {
     public static UIThongSo Instance;
@@ -140,5 +141,16 @@ public class UIThongSo : MonoBehaviour
     {
         if (moodText)
             moodText.text = $"{(int)currentMood}/{(int)maxStat}";
+    }
+
+    public void ForceEndOfDay()
+    {
+        // Đặt hẳn thành 22h (10 giờ tối)
+        currentHour = 22f;
+
+        // Dừng thời gian lại để nó không chạy lố sang ngày sau
+        isTimeRunning = false;
+
+        UpdateClockUI(); // Cập nhật hình ảnh đồng hồ ngay
     }
 }

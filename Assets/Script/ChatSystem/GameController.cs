@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Đừng quên import cái này để load Scene Ending
+
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
     [Header("--- DỮ LIỆU GAME ---")]
-    public List<ChapterData> allChapters; // Kéo các ChapterData vào đây
-
-    // [SerializeField] private int currentChapterIndex = 0;
-    private int currentTurnIndex = 0;
-    private int totalScore = 0;
+    public List<ChapterData> allChapters;
 
     [Header("--- UI CHAT ---")]
-    public ScrollRect chatScrollRect; // Kéo Scroll View vào
-    public Transform chatContent; // Kéo object Content trong Viewport vào
-    public GameObject choicePanel; // Panel chứa 2 nút chọn
+    public ScrollRect chatScrollRect;
+    public Transform chatContent;
+    public GameObject choicePanel;
 
     [Header("--- UI BUTTONS ---")]
     public Button btnOptionA;
@@ -27,124 +24,117 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI txtOptionB;
 
     [Header("--- PREFABS ---")]
-    public GameObject npcBubblePrefab; // Prefab tin nhắn NPC (có tên ở trên)
-    public GameObject playerBubblePrefab; // Prefab tin nhắn Player (không cần tên)
+    public GameObject npcBubblePrefab;
+    public GameObject playerBubblePrefab;
 
     [Header("--- UI THOUGHT (MỚI) ---")]
-    public GameObject thoughtPanel; // Kéo cái Panel chứa suy nghĩ vào
-    public TextMeshProUGUI thoughtText; // Kéo cái Text hiển thị suy nghĩ vào
+    public GameObject thoughtPanel;
+    public TextMeshProUGUI thoughtText;
 
     [Header("--- CẤU HÌNH ---")]
-    public float typingSpeed = 0.05f; // Tốc độ chạy chữ (càng nhỏ càng nhanh)
+    public float typingSpeed = 0.05f;
 
     private void Awake()
     {
-        // Singleton pattern
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
     }
 
-    // Hàm này được gọi từ OpenPhone.cs
+    // Hàm được gọi từ OpenPhone.cs hoặc Scene Start
     public void StartChapter()
     {
-        int chapterIdx = StoryData.CurrentChapterIndex;
-
-        // Kiểm tra xem có còn chapter nào không
-        if (chapterIdx >= allChapters.Count)
-            return;
-
-        ChapterData currentChapter = allChapters[chapterIdx];
-        int turnIdx = StoryData.CurrentTurnIndex;
-
-        // KIỂM TRA: Nếu đã chat hết lượt của chương này rồi
-        if (turnIdx >= currentChapter.chatSequence.Count)
+        // Nếu đã hết ngày (đang đợi ngủ) thì không hiện tin nhắn mới
+        if (StoryData.IsEndOfDay)
         {
-            Debug.Log("Đã hết tin nhắn hôm nay rồi!");
-            // Bạn có thể hiện một dòng text "Không có tin nhắn mới" ở đây nếu muốn
-            return; // Dừng lại, không load gì cả
+            Debug.Log("🌙 Đã hết ngày (IsEndOfDay = true). Hãy đi ngủ.");
+            return;
         }
 
-        // Nếu chưa hết thì load bình thường
-        LoadTurn(currentChapter.chatSequence[turnIdx]);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        ChapterData currentChapterData = null;
+
+        // LOGIC LẤY DATA THEO SCENE
+        if (currentSceneName == "city" || currentSceneName == "Ending")
+        {
+            // Ở City chỉ có 1 đoạn hội thoại (Chap 4b) -> Lấy cái đầu tiên
+            if (allChapters.Count > 0)
+            {
+                currentChapterData = allChapters[0];
+            }
+        }
+        else // Ở Nhà
+        {
+            int globalIndex = StoryData.CurrentChapterIndex;
+            if (globalIndex < allChapters.Count)
+            {
+                currentChapterData = allChapters[globalIndex];
+            }
+        }
+
+        if (currentChapterData == null)
+        {
+            Debug.LogWarning("⚠️ Không tìm thấy Chapter Data cho Scene: " + currentSceneName);
+            return;
+        }
+
+        int turnIdx = StoryData.CurrentTurnIndex;
+        if (turnIdx >= currentChapterData.chatSequence.Count)
+        {
+            Debug.Log("Đã hết tin nhắn trong Chapter này!");
+            return;
+        }
+
+        LoadTurn(currentChapterData.chatSequence[turnIdx]);
     }
 
-    // Tải nội dung của lượt chat hiện tại
-    // Thay đổi hàm LoadTurn thành Coroutine để xử lý việc chờ đợi
     void LoadTurn(DialogueTurn turn)
     {
-        // Gọi Coroutine chạy tuần tự
         StartCoroutine(PlayTurnSequence(turn));
     }
 
     IEnumerator PlayTurnSequence(DialogueTurn turn)
     {
-        // 1. Ẩn nút và suy nghĩ
         choicePanel.SetActive(false);
         if (thoughtPanel != null)
             thoughtPanel.SetActive(false);
 
-        // 2. CHẠY LIST TIN NHẮN
         foreach (NPCMessage msg in turn.conversation)
         {
-            // LOGIC MỚI: Phải thỏa mãn 2 điều kiện:
-            // - Có nội dung (content không rỗng)
-            // - Dấu tích showBubble được BẬT
             if (!string.IsNullOrEmpty(msg.content) && msg.showBubble)
             {
                 SpawnBubble(npcBubblePrefab, msg.content, msg.speakerName);
                 StartCoroutine(ScrollToBottom());
             }
-            else
-            {
-                // Nếu bỏ tích -> Không hiện bong bóng
-                // Nhưng vẫn có thể Log ra để biết game đang chạy ngầm
-                Debug.Log($"[ẨN] {msg.speakerName}: {msg.content}");
-            }
-
-            // Dù có hiện bong bóng hay không thì VẪN PHẢI CHỜ (Delay)
-            // Để tạo nhịp độ cho game (ví dụ chờ 2s cho người chơi đọc dòng dẫn chuyện)
             yield return new WaitForSeconds(msg.delayDuration);
         }
 
-        // 3. Hiện Suy Nghĩ
         yield return StartCoroutine(RunThoughtSequence(turn));
     }
 
     IEnumerator RunThoughtSequence(DialogueTurn turn)
     {
-        // Kiểm tra xem có suy nghĩ không
         if (!string.IsNullOrEmpty(turn.internalThought))
         {
-            // Bật khung suy nghĩ lên
             thoughtPanel.SetActive(true);
-            thoughtText.text = ""; // Xóa trắng nội dung cũ
+            thoughtText.text = "";
 
-            // --- HIỆU ỨNG ĐÁNH MÁY (Typewriter) ---
             foreach (char letter in turn.internalThought.ToCharArray())
             {
-                // KIỂM TRA AN TOÀN: Nếu bảng suy nghĩ hoặc text bị hủy thì dừng ngay
                 if (thoughtPanel == null || thoughtText == null || !thoughtPanel.activeSelf)
-                    yield break; // Thoát khỏi Coroutine ngay lập tức
-
+                    yield break;
                 thoughtText.text += letter;
                 yield return new WaitForSeconds(typingSpeed);
             }
-
-            // Đợi thêm 1 chút sau khi chạy xong chữ cho người chơi kịp đọc
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
-            // Nếu không có suy nghĩ thì tắt bảng đi
             thoughtPanel.SetActive(false);
         }
 
-        // --- CHẠY CHỮ XONG MỚI HIỆN NÚT CHỌN ---
         SetupChoices(turn);
-
-        // Cuộn xuống lần nữa để chắc chắn nút chọn không bị che
         StartCoroutine(ScrollToBottom());
     }
 
@@ -152,12 +142,10 @@ public class GameController : MonoBehaviour
     {
         choicePanel.SetActive(true);
 
-        // Setup Nút A
         txtOptionA.text = turn.optionA.optionText;
         btnOptionA.onClick.RemoveAllListeners();
         btnOptionA.onClick.AddListener(() => OnOptionSelected(turn, 0));
 
-        // Setup Nút B
         txtOptionB.text = turn.optionB.optionText;
         btnOptionB.onClick.RemoveAllListeners();
         btnOptionB.onClick.AddListener(() => OnOptionSelected(turn, 1));
@@ -167,232 +155,200 @@ public class GameController : MonoBehaviour
     {
         OptionData selectedOption = (choiceIndex == 0) ? turn.optionA : turn.optionB;
 
-        // 1. CẬP NHẬT ĐIỂM SỐ (Chạy trước)
+        // 1. CỘNG ĐIỂM
         StoryData.TotalScore += selectedOption.scoreImpact;
-
         if (UIThongSo.Instance != null)
         {
             UIThongSo.Instance.AddMood(selectedOption.scoreImpact);
-            Debug.Log($"Đã cập nhật Mood: {selectedOption.scoreImpact} điểm");
         }
 
-        // 2. ẨN UI
         choicePanel.SetActive(false);
         if (thoughtPanel != null)
             thoughtPanel.SetActive(false);
 
-        // 3. CHUYỂN SCENE NẾU CÓ
+        // 2. XỬ LÝ CHUYỂN SCENE (VÍ DỤ: TỪ NHÀ -> CITY HOẶC CITY -> NHÀ)
         if (!string.IsNullOrEmpty(selectedOption.nextSceneName))
         {
-            Debug.Log("Đang chuyển scene sang: " + selectedOption.nextSceneName);
+            Debug.Log("🚕 Đang chuyển scene sang: " + selectedOption.nextSceneName);
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            // Nếu đang ở City -> Về Nhà (Hết Chap 4b)
+            if (currentScene == "city")
+            {
+                // Về nhà là phải ngủ luôn
+                StoryData.IsEndOfDay = true;
+                if (UIThongSo.Instance != null)
+                    UIThongSo.Instance.ForceEndOfDay();
+            }
+
+            // Reset tin nhắn về 0 để qua scene mới đọc từ đầu
+            StoryData.CurrentTurnIndex = 0;
             SceneManager.LoadScene(selectedOption.nextSceneName);
             return;
         }
 
-    // Phần còn lại giữ nguyên
-
-        // ---------------------------------------------------------
-
-        // 2. HIỂN THỊ BONG BÓNG CHAT (Nếu có)
+        // 3. HIỂN THỊ BONG BÓNG PLAYER
         if (selectedOption.showBubble && !string.IsNullOrEmpty(selectedOption.responseText))
         {
             SpawnBubble(playerBubblePrefab, selectedOption.responseText, "Me");
         }
 
-        // 3. ẨN UI LỰA CHỌN
-        choicePanel.SetActive(false);
-        if (thoughtPanel != null)
-            thoughtPanel.SetActive(false);
-
-        // 4. KIỂM TRA: NẾU LÀ LƯỢT CUỐI (FINAL TURN)
+        // 4. KIỂM TRA LƯỢT CUỐI (FINAL TURN)
         if (turn.isFinalTurn)
         {
-            StoryData.CurrentTurnIndex++;
+            StoryData.CurrentTurnIndex++; // Tăng lên để đánh dấu đã xong câu cuối
+            CheckEndOfChapterLogic(); // GỌI HÀM KIỂM TRA LOGIC NGỦ/NHIỆM VỤ
 
-            // Nếu chọn A: Kết thúc hội thoại, không làm gì thêm
             if (choiceIndex == 0)
-            {
-                // Có thể thêm hàm đóng hội thoại ở đây nếu cần, VD: EndDialogue();
                 return;
-            }
 
-            // Nếu chọn B: Nhận nhiệm vụ
+            // Nếu chọn B có nhiệm vụ (Đi City)
             QuestData.HasActiveQuest = true;
             QuestData.IsQuestCompleted = false;
             QuestData.ShouldShowQuestUI = true;
-
             QuestData.QuestText = selectedOption.questText;
             QuestData.TargetTag = selectedOption.targetTag;
             QuestData.QuestScene = selectedOption.questScene;
             QuestData.OriginScene = selectedOption.originScene;
-
             UIQuest.Instance?.Refresh();
         }
-        // 5. NẾU KHÔNG PHẢI LƯỢT CUỐI -> CHUYỂN TIẾP (QUAN TRỌNG)
         else
         {
             NextTurn();
         }
     }
 
-    IEnumerator EndChapterAndStartMinigame(float bonusTime)
-    {
-        yield return new WaitForSeconds(1f);
-
-        Debug.Log("🚀 CHUYỂN SANG NHIỆM VỤ! Bonus Time: " + bonusTime);
-
-        DialogueTurn currentTurn = allChapters[StoryData.CurrentChapterIndex].chatSequence[
-            StoryData.CurrentTurnIndex - 1
-        ];
-        QuestManager questManager = FindObjectOfType<QuestManager>();
-        if (questManager != null)
-        {
-            questManager.StartQuest(
-                currentTurn.optionB.questText,
-                currentTurn.optionB.targetTag,
-                currentTurn.optionB.questScene,
-                currentTurn.optionB.originScene
-            );
-        }
-    }
-
     void NextTurn()
     {
         StoryData.CurrentTurnIndex++;
-
-        int chapterIdx = StoryData.CurrentChapterIndex;
         int turnIdx = StoryData.CurrentTurnIndex;
 
-        ChapterData currentChapter = allChapters[chapterIdx];
+        ChapterData currentChapter = null;
+        string currentScene = SceneManager.GetActiveScene().name;
 
-        // Nếu vẫn còn tin nhắn trong chương -> Load tiếp
+        if (currentScene == "city")
+        {
+            if (allChapters.Count > 0)
+                currentChapter = allChapters[0];
+        }
+        else
+        {
+            int chapterIdx = StoryData.CurrentChapterIndex;
+            if (chapterIdx < allChapters.Count)
+                currentChapter = allChapters[chapterIdx];
+        }
+
+        if (currentChapter == null)
+            return;
+
+        // NẾU CÒN TIN NHẮN -> CHẠY TIẾP
         if (turnIdx < currentChapter.chatSequence.Count)
         {
             StartCoroutine(WaitAndLoadNext(currentChapter.chatSequence[turnIdx]));
         }
         else
         {
-            Debug.Log("--- HẾT CHƯƠNG " + (chapterIdx + 1) + " ---");
-
-            // --- KIỂM TRA HẾT GAME ---
-            // Nếu đây là chương 5 (Index là 4 vì đếm từ 0, 1, 2, 3, 4)
-            // Hoặc đơn giản là kiểm tra xem còn chương nào phía sau không
-            if (chapterIdx >= 4) // Giả sử chương 5 là chương cuối
-            {
-                CalculateFinalEnding(); // Tính điểm kết thúc
-            }
-            else
-            {
-                // Chưa hết game -> Sang chương mới
-                StoryData.CurrentChapterIndex++;
-                StoryData.CurrentTurnIndex = 0;
-
-                // Load lại Scene để refresh UI cho ngày mới
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
+            // NẾU HẾT TIN NHẮN -> KIỂM TRA LOGIC KẾT THÚC CHƯƠNG
+            Debug.Log("✅ Hết danh sách tin nhắn (NextTurn)");
+            CheckEndOfChapterLogic();
         }
     }
 
-    void CalculateFinalEnding()
+    // --- HÀM LOGIC QUAN TRỌNG NHẤT: QUYẾT ĐỊNH CÓ ĐƯỢC NGỦ HAY KHÔNG ---
+    // Tìm hàm này trong GameController và sửa lại
+    void CheckEndOfChapterLogic()
     {
-        float finalMood = 0;
-        if (UIThongSo.Instance != null)
+        string currentScene = SceneManager.GetActiveScene().name;
+        int currentChapIdx = StoryData.CurrentChapterIndex;
+
+        // --- TRƯỜNG HỢP 1: ĐANG Ở CITY (Chap 4b) ---
+        if (currentScene == "city")
         {
-            finalMood = UIThongSo.Instance.currentMood;
+            Debug.Log("✅ Đã nói chuyện xong ở City. Hãy tự đi bộ về nhà!");
+
+            // 1. BẬT TRẠNG THÁI "HẾT NGÀY" (Để các scene sau biết là Nam đang mệt)
+            StoryData.IsEndOfDay = true;
+
+            // 2. Tua đồng hồ thành đêm (cho hợp lý)
+            if (UIThongSo.Instance != null)
+                UIThongSo.Instance.ForceEndOfDay();
+
+            // 3. QUAN TRỌNG: KHÔNG CHUYỂN SCENE TỰ ĐỘNG
+            // Để người chơi tự đi bộ đến cổng dịch chuyển
+            return;
         }
 
-        Debug.Log("🏁 TỔNG KẾT GAME! Mood cuối cùng: " + finalMood);
-
-        // Logic chia ending như bạn yêu cầu
-        if (finalMood < 26) // Dưới 25 (tức là từ 1 đến 25, vì 0 đã chết rồi)
+        // --- TRƯỜNG HỢP 2: ĐANG Ở NHÀ (Giữ nguyên logic cũ) ---
+        bool isChapter4AtHome = (currentChapIdx == 3);
+        if (isChapter4AtHome)
         {
-            StoryData.EndingID = 1; // Bad
+            // Chap 4a ở nhà -> Chưa được ngủ -> Phải đi City
+            Debug.Log("⚠️ Chap 4a ở nhà. Chưa được ngủ. Đi City!");
+            StoryData.IsEndOfDay = false;
         }
-        else if (finalMood >= 26 && finalMood <= 50)
+        else
         {
-            StoryData.EndingID = 2; // Normal
+            // Chap 1, 2, 3, 5 -> Xong việc -> Được ngủ
+            Debug.Log("✅ Xong việc ở nhà. Mở khóa giường!");
+            StoryData.IsEndOfDay = true;
+            if (UIThongSo.Instance != null)
+                UIThongSo.Instance.ForceEndOfDay();
         }
-        else if (finalMood >= 51 && finalMood <= 75)
-        {
-            StoryData.EndingID = 3; // Good
-        }
-        else // >= 76
-        {
-            StoryData.EndingID = 4; // Best
-        }
-
-        // Chuyển sang Scene Ending
-        // Thay "EndingScene" bằng tên thật scene của bạn
-        SceneManager.LoadScene("Ending");
     }
 
+    // CÁC HÀM PHỤ TRỢ GIỮ NGUYÊN
     IEnumerator WaitAndLoadNext(DialogueTurn turn)
     {
         yield return new WaitForSeconds(0.5f);
         LoadTurn(turn);
     }
 
-    // --- HÀM QUAN TRỌNG: SINH BONG BÓNG CHAT ---
     void SpawnBubble(GameObject prefab, string message, string senderName)
     {
-        Debug.LogError("🔴 [BƯỚC 3] Code đã chạy tới SpawnBubble! Đang tạo Clone..."); // <--- Thêm dòng này
-
-        if (prefab == null)
-            Debug.LogError("❌ LỖI: Prefab bị NULL!");
-        if (chatContent == null)
-            Debug.LogError("❌ LỖI: ChatContent bị NULL!");
-
+        if (prefab == null || chatContent == null)
+            return;
         GameObject bubble = Instantiate(prefab, chatContent);
-
-        // Tự động tìm các TextMeshPro bên trong Prefab
-        // QUY ƯỚC: Text[0] là Tên (nếu có), Text[1] là Nội dung
         TextMeshProUGUI[] texts = bubble.GetComponentsInChildren<TextMeshProUGUI>();
-
-        if (texts.Length == 2) // Dành cho NPC (Có tên + Nội dung)
+        if (texts.Length == 2)
         {
-            texts[0].text = senderName; // Cái text nằm trên
-            texts[1].text = message; // Cái text nằm trong bong bóng
+            texts[0].text = senderName;
+            texts[1].text = message;
         }
-        else if (texts.Length == 1) // Dành cho Player (Chỉ có nội dung)
+        else if (texts.Length == 1)
         {
             texts[0].text = message;
         }
-
-        // Bắt buộc UI cập nhật lại kích thước ngay lập tức
         LayoutRebuilder.ForceRebuildLayoutImmediate(chatContent.GetComponent<RectTransform>());
         StartCoroutine(ScrollToBottom());
     }
 
-    // Tự động cuộn xuống đáy
     IEnumerator ScrollToBottom()
     {
         yield return new WaitForEndOfFrame();
-        // Cập nhật lại layout lần nữa cho chắc
         Canvas.ForceUpdateCanvases();
-        chatScrollRect.verticalNormalizedPosition = 0f; // 0 = Dưới cùng
+        chatScrollRect.verticalNormalizedPosition = 0f;
         chatScrollRect.velocity = Vector2.zero;
     }
 
-    private void Update()
+    // Hàm tính Ending được gọi từ Script Giường (BedInteract)
+    public void CalculateFinalEnding()
     {
-        // --- CHEAT CODE: NHẤN R ĐỂ RESET GAME ---
-        // Chỉ dùng khi test, sau này build game nhớ xóa hoặc ẩn đi
-        if (Input.GetKeyDown(KeyCode.R))
+        float finalMood = 0;
+        if (UIThongSo.Instance != null)
         {
-            // 1. Reset dữ liệu trong RAM về 0
-            StoryData.CurrentChapterIndex = 0;
-            StoryData.CurrentTurnIndex = 0;
-            StoryData.TotalScore = 0;
-
-            // 2. Xóa dữ liệu trong ổ cứng (nếu bạn có dùng PlayerPrefs)
-            PlayerPrefs.DeleteAll();
-
-            // 3. Load lại màn chơi hiện tại
-            UnityEngine.SceneManagement.SceneManager.LoadScene(
-                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-            );
-
-            Debug.Log("🔄 ĐÃ RESET GAME VỀ TỪ ĐẦU (NGÀY 0 - TURN 0)!");
+            finalMood = UIThongSo.Instance.currentMood;
         }
+        Debug.Log("🏁 TỔNG KẾT GAME! Mood: " + finalMood);
+
+        if (finalMood < 26)
+            StoryData.EndingID = 1; // Bad
+        else if (finalMood <= 50)
+            StoryData.EndingID = 2; // Normal
+        else if (finalMood <= 75)
+            StoryData.EndingID = 3; // Good
+        else
+            StoryData.EndingID = 4; // Best
+
+        SceneManager.LoadScene("Ending");
     }
 }

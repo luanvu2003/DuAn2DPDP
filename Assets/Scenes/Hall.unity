@@ -675,7 +675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 577281194}
   - component: {fileID: 577281196}
-  - component: {fileID: 577281195}
+  - component: {fileID: 577281197}
   m_Layer: 0
   m_Name: GoToCity
   m_TagString: Untagged
@@ -698,18 +698,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 636567169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &577281195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577281193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3c0a5aa0481b5c4c896ca7ce4108263, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoToCity
 --- !u!61 &577281196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -756,6 +744,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.8729215, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &577281197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577281193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6d47cb69111ab48b66711844dc2e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTransfer
+  nextSceneName: city
+  requireEndOfDay: 0
 --- !u!1 &613386231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1084037636}
   - component: {fileID: 1084037638}
-  - component: {fileID: 1084037637}
+  - component: {fileID: 1084037639}
   m_Layer: 0
   m_Name: GoToHome
   m_TagString: Untagged
@@ -1122,18 +1124,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 636567169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1084037637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084037635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91752695823c36e438170f12f86364fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoToHome
 --- !u!61 &1084037638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1164,7 +1154,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1180,6 +1170,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 16.130638, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1084037639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084037635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6d47cb69111ab48b66711844dc2e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTransfer
+  nextSceneName: Home
+  requireEndOfDay: 0
 --- !u!1 &1128280861
 GameObject:
   m_ObjectHideFlags: 0
