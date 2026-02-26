@@ -15,4 +15,5 @@ public static class StoryData
     // 3: Good Ending (51 - 75)
     // 4: Best Ending (> 76)
     public static int EndingID = -1; 
+    
 }

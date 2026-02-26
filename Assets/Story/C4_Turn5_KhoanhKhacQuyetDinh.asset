@@ -35,6 +35,7 @@ MonoBehaviour:
     targetTag: 
     questScene: 
     originScene: 
+    nextSceneName: Minigame4
   optionB:
     optionText: "Tao v\u1EE9t m\xE1y \u0111\xE2y! TAO PH\u1EA2I C\u1EE8U B\xC0 \u1EA4Y!"
     responseText: "Tao v\u1EE9t m\xE1y \u0111\xE2y! TAO PH\u1EA2I C\u1EE8U B\xC0
@@ -46,4 +47,5 @@ MonoBehaviour:
     targetTag: 
     questScene: 
     originScene: 
+    nextSceneName: Minigame4
   isFinalTurn: 1

@@ -47,4 +47,8 @@ public class OptionData
     public string targetTag;     // Tag của GameObject mà Player phải đến
     public string questScene;    // Scene nhiệm vụ
     public string originScene;   // Scene gốc để quay lại
+    
+
+    [Header("Scene Settings")]
+    public string nextSceneName; // 🔥 CÁI M CẦN
 }
