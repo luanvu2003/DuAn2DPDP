@@ -21,9 +21,13 @@ MonoBehaviour:
       ch\u1EE9? M\xECnh x\u1EE9ng \u0111\xE1ng \u0111\u01B0\u1EE3c nhi\u1EC1u h\u01A1n."
     responseText: "T\u1EA1i sao m\xECnh ph\u1EA3i kh\u1ED5 s\u1EDF ch\u1EA1y xe \xF4m
       ch\u1EE9? M\xECnh x\u1EE9ng \u0111\xE1ng \u0111\u01B0\u1EE3c nhi\u1EC1u h\u01A1n."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "\u0110\u1ED3ng ti\u1EC1n m\u1ED3 h\xF4i n\u01B0\u1EDBc m\u1EAFt
       m\u1EDBi l\xE0 ti\u1EC1n s\u1EA1ch. C\u1EDD b\u1EA1c l\xE0 b\xE1c th\u1EB1ng
@@ -31,7 +35,11 @@ MonoBehaviour:
     responseText: "\u0110\u1ED3ng ti\u1EC1n m\u1ED3 h\xF4i n\u01B0\u1EDBc m\u1EAFt
       m\u1EDBi l\xE0 ti\u1EC1n s\u1EA1ch. C\u1EDD b\u1EA1c l\xE0 b\xE1c th\u1EB1ng
       b\u1EA7n."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

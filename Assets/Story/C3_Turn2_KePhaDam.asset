@@ -19,9 +19,9 @@ MonoBehaviour:
   optionA:
     optionText: "M\xE0y b\u1ECB \u0111i\xEAn \xE0 con ch\xF3 ngu n\xE0y! C\xFAt!"
     responseText: "M\xE0y b\u1ECB \u0111i\xEAn \xE0 con ch\xF3 ngu n\xE0y! C\xFAt!"
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 
@@ -31,9 +31,9 @@ MonoBehaviour:
       ph\xE1."
     responseText: "Th\xF4i n\xE0o M\u1EF1c, tao \u0111ang b\u1EF1c, \u0111\u1EEBng
       ph\xE1."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 

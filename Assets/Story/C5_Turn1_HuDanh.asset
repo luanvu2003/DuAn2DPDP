@@ -24,15 +24,23 @@ MonoBehaviour:
       ti\u1EBFng. B\u1ECDn th\u1EB1ng H\xF9ng ph\u1EA3i ng\u01B0\u1EDBc nh\xECn m\xECnh."
     responseText: "Cu\u1ED1i c\xF9ng m\xECnh c\u0169ng th\xE0nh ng\u01B0\u1EDDi n\u1ED5i
       ti\u1EBFng. B\u1ECDn th\u1EB1ng H\xF9ng ph\u1EA3i ng\u01B0\u1EDBc nh\xECn m\xECnh."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "\u1ED2n \xE0o qu\xE1. Nh\u1EEFng c\xE1i like n\xE0y \u0111\xE2u
       l\xE0m m\xECnh no b\u1EE5ng, \u0111\xE2u l\xE0m m\xECnh h\u1EA1nh ph\xFAc."
     responseText: "\u1ED2n \xE0o qu\xE1. Nh\u1EEFng c\xE1i like n\xE0y \u0111\xE2u
       l\xE0m m\xECnh no b\u1EE5ng, \u0111\xE2u l\xE0m m\xECnh h\u1EA1nh ph\xFAc."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

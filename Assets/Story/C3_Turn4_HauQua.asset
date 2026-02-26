@@ -21,9 +21,9 @@ MonoBehaviour:
       b\xE1n v\xE0o qu\xE1n c\u1EA7y t\u01A1."
     responseText: "Cho ch\u1EEBa. L\u1EA7n sau c\xF2n ph\xE1 tao n\u1EEFa th\xEC
       tao b\xE1n v\xE0o qu\xE1n c\u1EA7y t\u01A1."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 
@@ -31,9 +31,9 @@ MonoBehaviour:
   optionB:
     optionText: "M\u1EF1c \u01A1i... Tao xin l\u1ED7i. Tao n\xF3ng qu\xE1..."
     responseText: "M\u1EF1c \u01A1i... Tao xin l\u1ED7i. Tao n\xF3ng qu\xE1..."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 

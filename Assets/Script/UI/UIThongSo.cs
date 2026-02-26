@@ -1,43 +1,33 @@
-using UnityEngine;
-using UnityEngine.UI; 
 using TMPro;
-
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Đừng quên import cái này để load Scene Ending
 public class UIThongSo : MonoBehaviour
 {
     public static UIThongSo Instance;
 
     [Header("--- UI HIỂN THỊ ---")]
-    public GameObject hudPanel;       
-    public TextMeshProUGUI timeText;  
-    public TextMeshProUGUI foodText;  
-    public TextMeshProUGUI moodText;  
-
-    [Header("--- CẤU HÌNH TỰ GIẢM (ĐÓI BỤNG) ---")]
-    [Tooltip("Số điểm thức ăn bị trừ mỗi giây")]
-    public float foodDropRate = 1f; // Chỉnh số này: 1 = mất 1 điểm/giây (Nhanh), 0.1 = Chậm
-
-    [Header("--- ICON THỨC ĂN (FOOD) ---")]
-    public Image foodIconUI;          
-    public Sprite foodFull;           // No
-    public Sprite foodNormal;         // Bình thường
-    public Sprite foodHungry;         // Đói
+    public GameObject hudPanel;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI foodText;
+    public TextMeshProUGUI moodText;
 
     [Header("--- ICON THỜI GIAN ---")]
-    public Image timeIconUI;          
-    public Sprite[] timeIcons;        
+    public Image timeIconUI;
+    public Sprite[] timeIcons;
 
     [Header("--- THỜI GIAN ---")]
-    [Range(0, 24)] public float currentHour = 6f; 
-    public float timeSpeed = 1f;      
+    [Range(0, 24)]
+    public float currentHour = 6f;
+    public float timeSpeed = 1f;
     public bool isTimeRunning = false;
-    
+
     [Header("--- DEBUG ---")]
     public bool autoStart = false; // Tích vào để test nhanh ko cần Intro
 
     [Header("--- CHỈ SỐ PLAYER ---")]
     public float maxStat = 100f;
-    public float currentFood = 80f;
-    public float currentMood = 50f;   
+    public float currentMood = 50f;
 
     void Awake()
     {
@@ -46,7 +36,7 @@ public class UIThongSo : MonoBehaviour
         {
             Instance = this;
             // Dòng lệnh thần thánh: Giữ object này sống sót qua các Scene
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -64,9 +54,10 @@ public class UIThongSo : MonoBehaviour
         }
         else
         {
-            if (hudPanel) hudPanel.SetActive(false);
+            if (hudPanel)
+                hudPanel.SetActive(false);
         }
-        UpdateUI(); 
+        UpdateUI();
     }
 
     void Update()
@@ -81,19 +72,6 @@ public class UIThongSo : MonoBehaviour
                 EndDay();
             }
 
-            // 2. GIẢM ĐỘ ĂN THEO THỜI GIAN (MỚI)
-            if (currentFood > 0)
-            {
-                // Trừ dần thức ăn theo thời gian thực
-                currentFood -= foodDropRate * Time.deltaTime;
-            }
-            else
-            {
-                currentFood = 0;
-                // (Tùy chọn) Nếu đói quá (Food = 0) thì trừ luôn Mood?
-                // currentMood -= 1f * Time.deltaTime; 
-            }
-
             // Cập nhật giao diện liên tục
             UpdateClockUI();
             UpdateUI();
@@ -102,9 +80,10 @@ public class UIThongSo : MonoBehaviour
 
     public void StartDay()
     {
-        if (hudPanel) hudPanel.SetActive(true); 
-        isTimeRunning = true; 
-        currentHour = 6f; 
+        if (hudPanel)
+            hudPanel.SetActive(true);
+        isTimeRunning = true;
+        currentHour = 6f;
         UpdateUI();
     }
 
@@ -115,21 +94,29 @@ public class UIThongSo : MonoBehaviour
     }
 
     // --- CÁC HÀM CỘNG TRỪ ĐIỂM ---
-    
-    // Gọi hàm này khi ăn: UIThongSo.Instance.AddFood(20);
-    public void AddFood(float amount)
-    {
-        currentFood += amount;
-        currentFood = Mathf.Clamp(currentFood, 0, maxStat);
-        UpdateUI();
-    }
 
     // Gọi hàm này khi chơi Minigame: UIThongSo.Instance.AddMood(10);
+    // Cập nhật lại hàm này trong UIThongSo.cs
     public void AddMood(float amount)
     {
         currentMood += amount;
         currentMood = Mathf.Clamp(currentMood, 0, maxStat);
-        UpdateUI(); 
+
+        // Thêm log để bạn dễ test
+        if (amount > 0)
+            Debug.Log($"<color=green>Vui lên! +{amount} Mood</color>");
+        else if (amount < 0)
+            Debug.Log($"<color=red>Buồn quá! {amount} Mood</color>");
+
+        UpdateUI();
+        if (currentMood <= 0)
+        {
+            Debug.Log("💀 GAME OVER! Mood đã về 0.");
+            StoryData.EndingID = 0; // Set ID là Game Over
+
+            // Thay "TenSceneEndingCuaBan" bằng tên thật Scene Ending của bạn
+            SceneManager.LoadScene("Ending");
+        }
     }
 
     // --- CẬP NHẬT GIAO DIỆN ---
@@ -138,7 +125,8 @@ public class UIThongSo : MonoBehaviour
     {
         int hour = Mathf.FloorToInt(currentHour);
         int minute = Mathf.FloorToInt((currentHour - hour) * 60);
-        if (timeText) timeText.text = $"{hour:00}:{minute:00}";
+        if (timeText)
+            timeText.text = $"{hour:00}:{minute:00}";
 
         if (timeIconUI != null && timeIcons.Length > 0)
         {
@@ -150,19 +138,7 @@ public class UIThongSo : MonoBehaviour
 
     void UpdateUI()
     {
-        // Làm tròn số (int) để không hiện số lẻ xấu xí (VD: 79.5 -> 79)
-        if (foodText) foodText.text = $"{(int)currentFood}/{(int)maxStat}";
-        if (moodText) moodText.text = $"{(int)currentMood}/{(int)maxStat}";
-
-        // Đổi màu cảnh báo
-        if (foodText) foodText.color = currentFood < 20 ? Color.red : Color.white;
-        
-        // Đổi Icon Food
-        if (foodIconUI != null)
-        {
-            if (currentFood >= 70) foodIconUI.sprite = foodFull;
-            else if (currentFood >= 30) foodIconUI.sprite = foodNormal;
-            else foodIconUI.sprite = foodHungry;
-        }
+        if (moodText)
+            moodText.text = $"{(int)currentMood}/{(int)maxStat}";
     }
 }

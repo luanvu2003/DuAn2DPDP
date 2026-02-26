@@ -26,24 +26,24 @@ MonoBehaviour:
   internalThought: "Chi\u1EBFc xe t\u1EA3i \u0111ang lao t\u1EDBi r\u1EA5t nhanh
     trong khung h\xECnh camera..."
   optionA:
-    optionText: "\u0110\u01B0\u1EE3c r\u1ED3i, ph\u1EA3i c\u1EE9u b\xE0 \u1EA5y"
-    responseText: "\u0110\u01B0\u1EE3c r\u1ED3i, ph\u1EA3i c\u1EE9u b\xE0 \u1EA5y"
-    scoreImpact: 0
+    optionText: "Ch\u1EBFt r\u1ED3i... Tao kh\xF4ng d\xE1m nh\xECn..."
+    responseText: "Ch\u1EBFt r\u1ED3i... Tao kh\xF4ng d\xE1m nh\xECn..."
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
     questText: 
     targetTag: 
-    questScene: Minigame4
-    originScene: Minigame4
+    questScene: 
+    originScene: 
   optionB:
     optionText: "Tao v\u1EE9t m\xE1y \u0111\xE2y! TAO PH\u1EA2I C\u1EE8U B\xC0 \u1EA4Y!"
     responseText: "Tao v\u1EE9t m\xE1y \u0111\xE2y! TAO PH\u1EA2I C\u1EE8U B\xC0
       \u1EA4Y!"
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 1
     questText: 
     targetTag: 
-    questScene: Minigame4
-    originScene: Minigame4
+    questScene: 
+    originScene: 
   isFinalTurn: 1

@@ -24,7 +24,7 @@ MonoBehaviour:
       c\u1EE7a m\xE0y!"
     responseText: "C\xE2m m\u1ED3m! Tao \u0111\u1EBFch c\u1EA7n ti\u1EC1n b\u1ED1
       th\xED c\u1EE7a m\xE0y!"
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
     questText: 
@@ -36,9 +36,9 @@ MonoBehaviour:
       kh\xF4ng hi\u1EC3u m\xECnh."
     responseText: "H\u01A1i \u0111\xE2u m\xE0 c\xE3i nhau v\u1EDBi ng\u01B0\u1EDDi
       kh\xF4ng hi\u1EC3u m\xECnh."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 

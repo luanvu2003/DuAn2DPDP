@@ -16,9 +16,11 @@ MonoBehaviour:
   internalThought: "ph\u1EA3i mau ch\xF3ng ra xem c\xF3 chuy\u1EC7n g\xEC m\u1EDBi
     \u0111c "
   optionA:
-    optionText: 
-    responseText: 
-    scoreImpact: 0
+    optionText: "Ok \u0111\u1EE3i t\xED, tao \u0111ang len v\xE0o. Ph\u1EA3i zoom
+      k\u0129 m\u1EDBi n\xE9t."
+    responseText: "Ok \u0111\u1EE3i t\xED, tao \u0111ang len v\xE0o. Ph\u1EA3i zoom
+      k\u0129 m\u1EDBi n\xE9t."
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 0
     questText: 
@@ -26,9 +28,11 @@ MonoBehaviour:
     questScene: 
     originScene: 
   optionB:
-    optionText: 
-    responseText: 
-    scoreImpact: 0
+    optionText: "B\u1ECDn \u1EDF \u0111\xE2y \u0111i\xEAn h\u1EBFt r\u1ED3i. Kh\xF4ng
+      ai c\u1EE9u ng\u01B0\u1EDDi c\u1EA3, to\xE0n \u0111\u1EE9ng quay phim th\xF4i."
+    responseText: "B\u1ECDn \u1EDF \u0111\xE2y \u0111i\xEAn h\u1EBFt r\u1ED3i. Kh\xF4ng
+      ai c\u1EE9u ng\u01B0\u1EDDi c\u1EA3, to\xE0n \u0111\u1EE9ng quay phim th\xF4i."
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 0
     questText: 

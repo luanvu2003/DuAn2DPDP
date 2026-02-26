@@ -18,13 +18,21 @@ MonoBehaviour:
   optionA:
     optionText: "CHUY\u1EC2N KHO\u1EA2N!"
     responseText: "CHUY\u1EC2N KHO\u1EA2N!"
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "X\xF3a app l\u1EEBa \u0111\u1EA3o. \u0110i l\xE0m th\xF4i!"
     responseText: "X\xF3a app l\u1EEBa \u0111\u1EA3o. \u0110i l\xE0m th\xF4i!"
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0

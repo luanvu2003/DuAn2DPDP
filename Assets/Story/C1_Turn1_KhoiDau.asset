@@ -24,7 +24,7 @@ MonoBehaviour:
       Hay l\xE0m \u0103n phi ph\xE1p?"
     responseText: "M\u1EDBi tr\xFAng s\u1ED1 hay sao m\xE0 gi\xE0u nhanh th\u1EBF?
       Hay l\xE0m \u0103n phi ph\xE1p?"
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
     questText: 
@@ -36,9 +36,9 @@ MonoBehaviour:
       s\u1ED1ng."
     responseText: "K\u1EC7 n\xF3, cu\u1ED9c \u0111\u1EDDi ai ng\u01B0\u1EDDi n\u1EA5y
       s\u1ED1ng."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 

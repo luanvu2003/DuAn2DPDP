@@ -17,10 +17,10 @@ MonoBehaviour:
     ng\u1EA1t th\u1EDF. M\xECnh ph\u1EA3i l\xE0m g\xEC \u0111\xF3..."
   optionA:
     optionText: "Th\xF4i n\u1EB1m l\u01B0\u1EDBt TikTok t\xED \u0111\xE3, mai d\u1ECDn."
-    responseText: 
-    scoreImpact: 0
+    responseText: "Th\xF4i n\u1EB1m l\u01B0\u1EDBt TikTok t\xED \u0111\xE3, mai d\u1ECDn."
+    scoreImpact: -10
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 
@@ -28,10 +28,11 @@ MonoBehaviour:
   optionB:
     optionText: "\u0110\u1EE9ng d\u1EADy ngay! D\u1ECDn s\u1EA1ch c\xE1i chu\u1ED3ng
       l\u1EE3n n\xE0y!"
-    responseText: 
-    scoreImpact: 0
+    responseText: "\u0110\u1EE9ng d\u1EADy ngay! D\u1ECDn s\u1EA1ch c\xE1i chu\u1ED3ng
+      l\u1EE3n n\xE0y!"
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: "D\u1ECDn r\xE1c"
     targetTag: DonRac
     questScene: MiniGameScene

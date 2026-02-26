@@ -18,7 +18,7 @@ MonoBehaviour:
   optionA:
     optionText: "Gi\u1EEF \u0111i\u1EC7n tho\u1EA1i"
     responseText: "Gi\u1EEF \u0111i\u1EC7n tho\u1EA1i"
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 0
     questText: 
@@ -30,7 +30,7 @@ MonoBehaviour:
       th\u1EADt th\xF4i.\" "
     responseText: "T\u1EAFt ngu\u1ED3n: M\xE0n h\xECnh v\u1EE5t t\u1EAFt. \"S\u1ED1ng
       th\u1EADt th\xF4i.\" "
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 0
     questText: "Tr\u1ED3ng c\xE2y"

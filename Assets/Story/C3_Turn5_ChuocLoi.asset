@@ -19,9 +19,9 @@ MonoBehaviour:
       \u0110i nhanh r\u1ED3i v\u1EC1 tao c\xF2n ch\u1EEDi nhau ti\u1EBFp."
     responseText: "Th\xF4i \u0111i ra ngo\xE0i t\xED cho \u0111\u1EE1 nh\u1EE9c \u0111\u1EA7u.
       \u0110i nhanh r\u1ED3i v\u1EC1 tao c\xF2n ch\u1EEDi nhau ti\u1EBFp."
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: 
     targetTag: 
     questScene: 
@@ -31,9 +31,9 @@ MonoBehaviour:
       \u0111i\u1EC7n tho\u1EA1i n\u1EEFa."
     responseText: "\u0110i d\u1EA1o c\xF4ng vi\xEAn nh\xE9? Tao s\u1EBD kh\xF4ng
       c\u1EA7m \u0111i\u1EC7n tho\u1EA1i n\u1EEFa."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
-    showBubble: 1
+    showBubble: 0
     questText: "D\u1EAFt ch\xF3 \u0111i d\u1EA1o"
     targetTag: DatCho
     questScene: MiniGameScene3

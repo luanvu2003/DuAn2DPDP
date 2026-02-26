@@ -22,15 +22,23 @@ MonoBehaviour:
   optionA:
     optionText: "Th\u1EADt kh\xF4ng? C\xF3 l\u1EEBa \u0111\u1EA3o kh\xF4ng \u0111\u1EA5y?"
     responseText: "Th\u1EADt kh\xF4ng? C\xF3 l\u1EEBa \u0111\u1EA3o kh\xF4ng \u0111\u1EA5y?"
-    scoreImpact: 0
+    scoreImpact: -10
     minigameBonusTime: 0
     showBubble: 1
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   optionB:
     optionText: "L\xE0m g\xEC c\xF3 chuy\u1EC7n ti\u1EC1n t\u1EEB tr\xEAn tr\u1EDDi
       r\u01A1i xu\u1ED1ng."
     responseText: "L\xE0m g\xEC c\xF3 chuy\u1EC7n ti\u1EC1n t\u1EEB tr\xEAn tr\u1EDDi
       r\u01A1i xu\u1ED1ng."
-    scoreImpact: 0
+    scoreImpact: 5
     minigameBonusTime: 0
     showBubble: 0
+    questText: 
+    targetTag: 
+    questScene: 
+    originScene: 
   isFinalTurn: 0
